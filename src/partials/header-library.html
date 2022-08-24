@@ -1,8 +1,8 @@
-<header class="header-bg-lib">
+<header class="header header-bg-lib">
     <div class="container">
         <div class="header-section-lib">
             <nav class="navigation">
-                <a href="/index.html" class="navigation__logo logo"><svg class="logo__icon" width="24" height="24">
+                <a href="/src/index.html" class="navigation__logo logo"><svg class="logo__icon" width="24" height="24">
                         <use href="/src/images/sprite.svg#icon-film"></use>
                     </svg>
                     <span class="logo__name">Filmoteka</span>
@@ -23,21 +23,21 @@
                         <li class="storage__item">
                             <label class="storage__label">
                                 <input type="radio" name="storage-btn" value="Watched"
-                                    class="storage__input visuallyhidden" checked />
+                                    class="storage__input visualy-hidden header__watch-btn" checked />
                                 <span class="storage__btn" id="js-WatchedButton">WACHED</span>
                             </label>
                         </li>
                         <li class="storage__item">
                             <label class="storage__label">
                                 <input type="radio" name="storage-btn" value="Queue"
-                                    class="storage__input visuallyhidden" />
+                                    class="storage__input visualy-hidden header__queue-btn" />
                                 <span class="storage__btn" id="js-QueueButton">QUEUE</span>
                             </label>
                         </li>
                     </ul>
+                </div>
             </form>
         </div>
-        <div class="js-warning header-warning"></div>
-        <div class="js-search-results header-warning"></div>
+
     </div>
 </header>
