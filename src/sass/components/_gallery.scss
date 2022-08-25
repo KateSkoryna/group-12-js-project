@@ -39,7 +39,7 @@
   }
   
   .gallery__name { 
-    @include font__style();
+    @include font-style(500, 12px, 14px, 0.03em);
     text-transform: uppercase;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -49,17 +49,17 @@
     
   .gallery__year, .gallery__genres {
    display: inline-block; 
-   @include font__style();
+   @include font-style(500, 12px, 14px, 0.03em);
     color: var(--accent-color);
   }
   
   .gallery__vote {
     background: var(--accent-color);
-    color: var(--main-color);
+    color: var(--main-color); 
+    @include font-style(500, 12px, 14px, 0.03em);
     align-items: center;
     padding: 1px 8px;
     border-radius: 5px;
-    @include font__style();
     margin-left: 4px;
   }
 
