@@ -1,4 +1,5 @@
 const form = document.querySelector('.header__form');
+const paginationEl = document.querySelector('#pagination');
 const gallery = document.querySelector('.gallery__list');
 const galleryListEl = document.querySelector('.gallery__item');
 const modalCloseBtn = document.querySelector('.modal__close-btn');
