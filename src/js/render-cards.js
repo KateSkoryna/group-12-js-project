@@ -3,8 +3,10 @@ import { gallery } from './refs';
 // рендер трендовых фильмов
 
 export function renderTrandFilms(data) {
-    const markup = data.map(({poster_path, title, id, genres, year, vote_average}) => {
-      return  `<li class="gallery__item" data-id="${id}">
+    gallery.innerHTML = '';
+  const markup = data
+    .map(({ poster_path, title, id, genre_ids, year, vote_average }) => {
+      return `<li class="gallery__item" data-id="${id}">
     <div class="gallery__wrapper">
         <img
             class="gallery__img"
@@ -14,12 +16,13 @@ export function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb">
         <h3 class="gallery__name">${title}</h3>
-        <p class="gallery__genres">${genres.name}</p>
-        <p class="gallery__year">${year}</p>
+        <p class="gallery__genres">${genre_ids}</p>
+        <span class="gallery__year">${year}</span>
         <span class="gallery__vote">${vote_average}</span>
     </div>
 </li>`;
-    }).join('');
-
-    gallery.insertAdjacentHTML('beforeend', markup);
+    })
+    .join('');
+  gallery.innerHTML = markup;
+  return gallery;
 }
