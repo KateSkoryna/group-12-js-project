@@ -2,8 +2,8 @@ import { gallery } from './refs';
 
 // рендер трендовых фильмов
 
-export function renderTrandFilms(data) {
-    gallery.innerHTML = '';
+function renderTrandFilms(data) {
+  gallery.innerHTML = '';
   const markup = data
     .map(({ poster_path, title, id, genre_ids, year, vote_average }) => {
       return `<li class="gallery__item" data-id="${id}">
@@ -26,3 +26,5 @@ export function renderTrandFilms(data) {
   gallery.innerHTML = markup;
   return gallery;
 }
+
+export { renderTrandFilms };

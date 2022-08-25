@@ -13,6 +13,7 @@ const btnToTop = document.querySelector('.back-to-top');
 export {
   form,
   gallery,
+  paginationEl,
   galleryListEl,
   modalCloseBtn,
   modalWatchBtn,
