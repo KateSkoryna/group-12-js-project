@@ -2,7 +2,7 @@ import { gallery } from './refs';
 
 // рендер трендовых фильмов
 
-export function renderTrandFilms(data){
+export function renderTrandFilms(data) {
     const markup = data.map(({poster_path, title, id, genres, year, vote_average}) => {
       return  `<li class="gallery__item" data-id="${id}">
     <div class="gallery__wrapper">
