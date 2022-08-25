@@ -42,7 +42,6 @@ paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();
-  gallery.innerHTML = '';
 
   const value = event.target.query.value.toLowerCase().trim();
   console.log(value);
