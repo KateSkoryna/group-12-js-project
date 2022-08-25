@@ -7,6 +7,7 @@ const modalQueueBtn = document.querySelector('.modal__queueBtn');
 const footerTeamLink = document.querySelector('.footer__link');
 const myLibWatchBtn = document.querySelector('.header__watch-btn');
 const myLibQueueBtn = document.querySelector('.header__queue-btn');
+const btnToTop = document.querySelector('.back-to-top');
 
 export {
   form,
@@ -18,4 +19,5 @@ export {
   footerTeamLink,
   myLibWatchBtn,
   myLibQueueBtn,
+  btnToTop,
 };
