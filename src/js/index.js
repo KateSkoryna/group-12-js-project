@@ -23,7 +23,6 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 
 form.addEventListener('submit', onClickRead);
 
-console.log(form);
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -44,8 +43,6 @@ function onClickRead(event) {
   event.preventDefault();
 
   const value = event.target.query.value.toLowerCase().trim();
-  console.log(value);
-  console.log(page);
 
   if (!value) {
     Notify.failure('enter text!');
@@ -56,15 +53,13 @@ function onClickRead(event) {
   fetchSearchFilms(value, page).then(
     ({ total, total_pages: totalPages, results: images }) => {
       if (images.length === 0) {
-        paginationEl.classList.add('is-hidden');
+        paginationEl.classList.add('visually-hidden');
         Notify.failure(`Images by not found!`);
         return;
       }
 
-      console.log(images);
-      paginationEl.classList.remove('is-hidden');
+      paginationEl.classList.remove('visually-hidden');
       paganation.reset(total);
-
       return renderTrandFilms(images);
     }
   );
@@ -73,6 +68,6 @@ function onClickRead(event) {
 function popular(event) {
   const currentPage = event.page;
   fetchTrendFilms(currentPage).then(({ results: images }) => {
-    renderTrandFilm(images);
+    return renderTrandFilm(images);
   });
 }
