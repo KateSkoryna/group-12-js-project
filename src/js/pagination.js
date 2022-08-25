@@ -1,6 +1,9 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-export {page}
+export { page, options, paganation, popular }
+import { renderTrandFilms } from './render-cards';
+import { fetchSearchingFilms } from './fetch-films';
+import { fetchTrendFilms } from './fetch-films';
 
 const options = {
   totalItems: 0,
@@ -13,10 +16,18 @@ const paganation = new Pagination(document.getElementById('pagination'), options
 const page = paganation.getCurrentPage();
 
 paganation.on('afterMove', popular);
+paganation.on('afterMove', searchFilm);
 
 function popular(event) {
   const currentPage = event.page;
-  getImg(currentPage).then((photo) => {
-renderGallery(photo.data)
+  fetchTrendFilms(currentPage).then((data) => {
+renderTrandFilms(data)
+  })
+}
+
+function searchFilm(event) {
+    const currentPage = event.page;
+  fetchSearchingFilms(currentPage).then((data) => {
+renderSearchingFilms(data)
   })
 }
