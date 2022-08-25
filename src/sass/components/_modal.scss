@@ -47,6 +47,7 @@
 }
 
 .modal__close-icon {
+    @include size(18px, 18px);
     width: 18px;
     height: 18px;
     stroke: currentColor;
@@ -62,10 +63,10 @@
 }
 .modal__title {
     font-family: var(--font-family-main);
-    //@include font-style (500, 20px, 23.44px, 0.08em);
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
+    @include font-style (500, 20px, 23.44px, 0.08em);
+    // font-weight: 500;
+    // font-size: 20px;
+    // line-height: 1.15;
     margin-bottom: 20px;
 
 }
