@@ -50,6 +50,6 @@
 @mixin font-style ($fw, $fs, $lh, $ls) {
     font-weight: $fw;
     font-size: $fs;
-    line-height: decimal-round(calc($lh/$fs), 2);
+    line-height: decimal-round($lh/$fs, 2);
     letter-spacing: $ls;
 }
