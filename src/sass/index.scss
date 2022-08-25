@@ -1,3 +1,4 @@
+@import './utils/mixins';
 @import './base/common';
 @import './base/container';
 @import './components/header';
@@ -5,6 +6,5 @@
 @import './components/modal';
 @import './components/buttons';
 @import './components/footer';
-@import './utils/mixins';
 @import './utils/variables';
 @import './utils/visualy-hidden';
