@@ -5,8 +5,10 @@ import { gallery } from './refs';
 function renderTrandFilms(data) {
   gallery.innerHTML = '';
   const markup = data
-    .map(({ poster_path, title, id, genre_ids, year, vote_average }) => {
-      return `<li class="gallery__item" data-id="${id}">
+    .map(
+      ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
+        const year = parseInt(release_date);
+        return `<li class="gallery__item" data-id="${id}">
     <div class="gallery__wrapper">
         <img
             class="gallery__img"
@@ -17,11 +19,12 @@ function renderTrandFilms(data) {
     <div class="gallery__thumb">
         <h3 class="gallery__name">${title}</h3>
         <p class="gallery__genres">${genre_ids}</p>
-        <span class="gallery__year">${year}</span>
+        <span class="gallery__year">${year ? year : 'n/a'}</span>
         <span class="gallery__vote">${vote_average}</span>
     </div>
 </li>`;
-    })
+      }
+    )
     .join('');
   gallery.innerHTML = markup;
   return gallery;
