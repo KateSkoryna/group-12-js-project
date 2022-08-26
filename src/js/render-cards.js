@@ -1,9 +1,9 @@
-import { gallery } from './refs';
+import { modal } from './refs';
 
 // рендер трендовых фильмов
 
-function renderTrandFilms(data) {
-  gallery.innerHTML = '';
+export default function renderTrandFilms(data) {
+  modal.innerHTML = '';
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
@@ -16,6 +16,7 @@ function renderTrandFilms(data) {
             src="https://www.themoviedb.org/t/p/w500${poster_path}"
             alt="${title}"
             loading="lazy"
+            data-id="${id}"
             >
     </div>
     <div class="gallery__thumb">
@@ -27,8 +28,7 @@ function renderTrandFilms(data) {
       }
     )
     .join('');
-  gallery.innerHTML = markup;
-  return gallery;
+  modal.innerHTML = markup;
+  return modal;
 }
 
-export { renderTrandFilms };

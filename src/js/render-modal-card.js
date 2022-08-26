@@ -1,14 +1,22 @@
-<div class="backdrop is-hidden" data-modal>
-    <div class="modal">
-    <!-- <button type="button" class="modal__close-btn" data-modal-close>
-            <svg class="modal__close-icon">
-                <use href="./images/sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal__poster-wrap">-->
+import { gallery, backdrop } from './refs';
+
+
+export default function renderModalCard(id) {
+  gallery.innerHTML = '';
+  const markup = id
+    .map(
+        ({ poster_path,
+            title,
+            vote_average,
+            vote_count,
+            popularity,
+            original_title,
+            genre_ids,
+            overview, }) => {
+        return `<div class="modal__poster-wrap">
             <!--<img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">-->
-    <!-- </div>
-        <div class="modal__card">-->
+        </div>
+        <div class="modal__card">
             <!--<h2 class="modal__title">${title}</h2>
             <div class="modal__list-wrap">
                 <ul class="modal__list">
@@ -22,15 +30,23 @@
                         <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render">${original_title}</li>
-                    <li class="modal__item-render">${genres}</li>
+                    <li class="modal__item-render">${genre_ids}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>-->
-        <!--  <div class="modal__button-wrap">
+            <div class="modal__button-wrap">
                 <button class="modal__watch-btn modal__btn" type="button">add to Watched</button>
                 <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
             </div>
-        </div>-->
-    </div>
-</div>
+        </div>`;
+      }
+    )
+    .join('');
+  gallery.innerHTML = markup;
+  return gallery;
+}
+
+//export default function toggleModal() {
+//   backdrop.classList.toggle("is-hidden");
+ // };

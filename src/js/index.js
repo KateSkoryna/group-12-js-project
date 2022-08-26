@@ -9,6 +9,7 @@ import {
   footerTeamLink,
   myLibWatchBtn,
   myLibQueueBtn,
+  backdrop,
 } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms } from './render-cards';
@@ -20,6 +21,7 @@ import {
 
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
+//import toggleModal from 'render-modal-card';
 
 form.addEventListener('submit', onClickRead);
 
@@ -71,3 +73,8 @@ function popular(event) {
     return renderTrandFilm(images);
   });
 }
+
+
+gallery.addEventListener('click', onGalleryCardClick);
+
+
