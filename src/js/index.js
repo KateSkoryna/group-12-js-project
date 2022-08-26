@@ -13,7 +13,7 @@ import {
   myLibQueueBtn,
 } from './refs';
 import { Notify } from 'notiflix';
-import { renderTrandFilms } from './render-cards';
+import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import {
   fetchTrendFilms,
   fetchSearchFilms,
@@ -33,9 +33,11 @@ const paganation = new Pagination(
   options
 );
 
-const page = paganation.getCurrentPage();
+export const page = paganation.getCurrentPage();
+let pageNum
+ paganation.on('afterMove', search);
 
-fetchTrendFilms(page).then(({total_pages: totalPages, results: images }) => {
+fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
   paganation.reset(totalPages);
   renderTrandFilms(images);
@@ -44,32 +46,18 @@ fetchTrendFilms(page).then(({total_pages: totalPages, results: images }) => {
 
 form.addEventListener('submit', onClickRead);
 
-// const options = {
-//   totalItems: 0,
-//   itemsPerPage: 20,
-//   visiblePages: 5,
-//   centerAlign: true,
-//   page: 1,
-// };
-// const paganation = new Pagination(
-//   document.getElementById('pagination'),
-//   options
-// );
 
-// const page = paganation.getCurrentPage();
-
-paganation.on('afterMove', popular);
+let value = null
 
 function onClickRead(event) {
   event.preventDefault();
 
-  const value = event.target.query.value.toLowerCase().trim();
+   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
     Notify.failure('enter text!');
     return;
   }
-  // paganation.off('afterMove', popular);
 
   fetchSearchFilms(value, page).then(
     ({ total, total_pages: totalPages, results: images }) => {
@@ -80,20 +68,28 @@ function onClickRead(event) {
       }
 
       paginationEl.classList.remove('visually-hidden');
+      renderSearchFilms(images);
       paganation.reset(totalPages);
-      renderTrandFilms(images);
-      
+     
     }
   );
 }
 
 function popular(event) {
-  // gallery.innerHTML = ""
   console.log(event)
   const currentPage = event.page;
   console.log(currentPage)
   fetchTrendFilms(currentPage).then(({ results: images }) => {
      renderTrandFilms(images);
+  });
+};
+
+function search(event) {
+  console.log(event)
+  const currentPage = event.page;
+  console.log(currentPage)
+  fetchSearchFilms(value, currentPage).then(({ results: images }) => {
+     renderSearchFilms(images);
   });
 }
 // function popular(event) {
