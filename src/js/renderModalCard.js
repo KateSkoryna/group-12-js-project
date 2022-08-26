@@ -1,12 +1,21 @@
-<div class="backdrop is-hidden" data-modal>
-    <div class="modal">
-        <button type="button" class="modal__close-btn" data-modal-close>
-            <svg class="modal__close-icon">
-                <use href="./images/sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal__poster-wrap">
-            <!--<img class="modal__poster" src="${poster_path}" alt="${title}">-->
+import { modal, backdrop } from './refs';
+
+export default function renderModalCard(id) {
+  modal.innerHTML = '';
+  const markup = id
+    .map(
+      ({
+        poster_path,
+        title,
+        vote_average,
+        vote_count,
+        popularity,
+        original_title,
+        genre_ids,
+        overview,
+      }) => {
+        return `<div class="modal__poster-wrap">
+            <!--<img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">-->
         </div>
         <div class="modal__card">
             <!--<h2 class="modal__title">${title}</h2>
@@ -31,6 +40,12 @@
                 <button class="modal__watch-btn modal__btn" type="button">add to Watched</button>
                 <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
             </div>
-        </div>
-    </div>
-</div>
+        </div>`;
+      }
+    )
+    .join('');
+  modal.innerHTML = markup;
+  return modal;
+}
+
+export { renderModalCard };

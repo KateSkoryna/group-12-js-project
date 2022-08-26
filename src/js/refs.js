@@ -9,6 +9,7 @@ const footerTeamLink = document.querySelector('.footer__link');
 const myLibWatchBtn = document.querySelector('.header__watch-btn');
 const myLibQueueBtn = document.querySelector('.header__queue-btn');
 const btnToTop = document.querySelector('.back-to-top');
+const backdrop = document.querySelector('.backdrop');
 
 export {
   form,
@@ -22,4 +23,5 @@ export {
   myLibWatchBtn,
   myLibQueueBtn,
   btnToTop,
+  backdrop,
 };
