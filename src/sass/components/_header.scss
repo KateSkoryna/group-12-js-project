@@ -25,7 +25,7 @@
     background-size: cover;
     
 
-    max-width: 768px;
+    max-width: 480px;
    
 
     background-image: url(/src/images/Mobile/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
@@ -39,7 +39,7 @@
     }
 
     @media screen and (min-width: 768px) {
-        max-width: 1280px;
+        max-width: 768px;
 
         background-image: url(/src/images/Tablet/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 
@@ -52,7 +52,7 @@
     }
 
     @media screen and (min-width: 1280px) {
-        max-width: 1680px;
+        max-width: 1280px;
         background-image: url(/src/images/Desktop/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
             
 
@@ -115,7 +115,7 @@
     }
 
     @media screen and (min-width: 1280px) {
-        right: 443px;
+        right: 458px;
     }
 
     padding: 0;
@@ -151,7 +151,7 @@
         margin-right: 10px;
     }
                
-        transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
                 &:hover {
                     transform:rotate(360deg);
                 }
@@ -206,4 +206,5 @@
         background-color: var(--underline-color);
     }
 }
+
 
