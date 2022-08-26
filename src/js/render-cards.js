@@ -30,7 +30,7 @@ function renderTrandFilms(data) {
     .join('');
   gallery.innerHTML = markup;
   return gallery;
-};
+}
 
 function renderSearchFilms(data) {
   gallery.innerHTML = '';
@@ -38,9 +38,11 @@ function renderSearchFilms(data) {
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
         const year = parseInt(release_date);
+        const rating = vote_average.toFixed(1);
+
         return `<li class="gallery__item" data-id="${id}">
     <div class="gallery__wrapper">
-    <span class="gallery__vote">${vote_average}</span>
+    <span class="gallery__vote">${rating}</span>
         <img
             class="gallery__img"
             src="https://www.themoviedb.org/t/p/w500${poster_path}"
