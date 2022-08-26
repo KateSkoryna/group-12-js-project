@@ -10,7 +10,7 @@ import {
   myLibWatchBtn,
   myLibQueueBtn,
 } from './refs';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix';
 import { renderTrandFilms } from './render-cards';
 import {
   fetchTrendFilms,
