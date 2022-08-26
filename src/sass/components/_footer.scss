@@ -1,1 +1,116 @@
+.footer {
+  background-color: #F7F7F7;
+}
 
+.footer__discription::before {
+  content: '|';
+  color: #545454;
+}
+
+.footer__discription::after {
+  content: '|';
+  color: #545454;
+}
+
+.footer__box {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  color: #545454;
+
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.18;
+  }
+}
+
+.footer__stringDown {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 3px;
+  }
+
+}
+
+//!============ heart
+.heart {
+  animation: heartbeat 1s infinite;
+  background-color: var(--accent-color);
+  display: inline-block;
+  height: 10px;
+  margin: 0 10px;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 10px;
+
+  &:before,
+  &:after {
+    content: '';
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+  }
+
+  &:before {
+    top: -5px;
+    left: 0;
+  }
+
+  &:after {
+    left: 5px;
+    top: 0;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(.75) rotate(-45deg);
+    ;
+  }
+
+  20% {
+    transform: scale(1) rotate(-45deg);
+    ;
+  }
+
+  40% {
+    transform: scale(.75) rotate(-45deg);
+    ;
+  }
+
+  60% {
+    transform: scale(1) rotate(-45deg);
+    ;
+  }
+
+  80% {
+    transform: scale(.75) rotate(-45deg);
+    ;
+  }
+
+  100% {
+    transform: scale(.75) rotate(-45deg);
+    ;
+  }
+}
