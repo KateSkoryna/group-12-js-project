@@ -21,10 +21,6 @@ import {
   fetchGenres,
 } from './fetch-films';
 
-
-
-form.addEventListener('submit', onClickRead);
-
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -38,6 +34,29 @@ const paganation = new Pagination(
 );
 
 const page = paganation.getCurrentPage();
+
+fetchTrendFilms(page).then(({total_pages: totalPages, results: images }) => {
+  paginationEl.classList.remove('visually-hidden');
+  paganation.reset(totalPages);
+  renderTrandFilms(images);
+})
+  
+
+form.addEventListener('submit', onClickRead);
+
+// const options = {
+//   totalItems: 0,
+//   itemsPerPage: 20,
+//   visiblePages: 5,
+//   centerAlign: true,
+//   page: 1,
+// };
+// const paganation = new Pagination(
+//   document.getElementById('pagination'),
+//   options
+// );
+
+// const page = paganation.getCurrentPage();
 
 paganation.on('afterMove', popular);
 
