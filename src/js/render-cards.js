@@ -44,11 +44,8 @@ function renderTrandFilms(data) {
     }
     const arr = [...data].filter(movie => movie.id === value);
     const movie = arr[0];
-    console.log(movie);
     renderModalCard(movie);
   }
-  modalCloseBtn.addEventListener('click', closeModal);
-  function closeModal() {}
 }
 
 function renderSearchFilms(data) {

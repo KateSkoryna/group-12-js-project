@@ -25,6 +25,7 @@
 }
 
 .modal {
+    display: flex;
    position: absolute;
    top: 20px;
    left: 20px;
@@ -48,8 +49,6 @@
 
 .modal__close-icon {
     @include size(18px, 18px);
-    width: 18px;
-    height: 18px;
     stroke: currentColor;
 }
 
