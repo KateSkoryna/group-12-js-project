@@ -56,29 +56,29 @@
   animation: heartbeat 1s infinite;
   background-color: var(--accent-color);
   display: inline-block;
-  height: 10px;
-  margin: 0 10px;
+  height: 12px;
+  margin: 0 12px;
   top: 0;
   transform: rotate(-45deg);
-  width: 10px;
+  width: 12px;
 
   &:before,
   &:after {
     content: '';
     background-color: var(--accent-color);
     border-radius: 50%;
-    height: 10px;
+    height: 12px;
     position: absolute;
-    width: 10px;
+    width: 12px;
   }
 
   &:before {
-    top: -5px;
+    top: -8px;
     left: 0;
   }
 
   &:after {
-    left: 5px;
+    left: 8px;
     top: 0;
   }
 }
