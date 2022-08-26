@@ -13,16 +13,35 @@
     border-radius: 10%;
     display: none;
     @include font-style(500,
-        16px,
-        42px,
+        14px,
+        22px,
         0.08em);
-        text-align: center;
-        transition: background-color 250ms linear, color 250ms linear;
+    text-align: center;
+    transition: background-color 250ms linear, color 250ms linear;
+    padding-top: 10px;
+    padding-left: 2px;
 
     &:hover {
             background-color: var(--accent-color);
             color: var(--main-color);
             transform: scale(1.1);
+        }
+
+                                @media screen and (min-width:768px) {
+                                    bottom: 90px;
+                                    right: 30px;
+                                }
+
+        @media screen and (min-width:1280px) {
+            @include font-style(500,
+                    16px,
+                    38px,
+                    0.08em);
+            padding: 10px;
+            width: 60px;
+            height: 60px;
+            bottom: 100px;
+            right: 30px;
         }
 }
 
