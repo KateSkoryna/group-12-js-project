@@ -33,25 +33,24 @@ const paganation = new Pagination(
   options
 );
 
-export const page = paganation.getCurrentPage();
-let pageNum
+ const page = paganation.getCurrentPage();
  paganation.on('afterMove', search);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
   paganation.reset(totalPages);
   renderTrandFilms(images);
+  paganation.on('afterMove', popular);
+  paganation.off('afterMove', search);
 })
   
-
 form.addEventListener('submit', onClickRead);
 
 paganation.on('afterMove', popular);
-let value = null
 
 function onClickRead(event) {
   event.preventDefault();
-
+  
    value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
@@ -60,42 +59,35 @@ function onClickRead(event) {
   }
 
   fetchSearchFilms(value, page).then(
-    ({ total, total_pages: totalPages, results: images }) => {
+    ({ total_pages: totalPages, results: images }) => {
+      form.reset()
       if (images.length === 0) {
         paginationEl.classList.add('visually-hidden');
         Notify.failure(`Images by not found!`);
         return;
-      }
+      };
 
       paginationEl.classList.remove('visually-hidden');
       renderSearchFilms(images);
       paganation.reset(totalPages);
-     
+     paganation.on('afterMove', search);
+     paganation.off('afterMove', popular);
     }
   );
-}
+};
 
 function popular(event) {
-  console.log(event)
+  gallery.innerHTML = ""
   const currentPage = event.page;
-  console.log(currentPage)
   fetchTrendFilms(currentPage).then(({ results: images }) => {
      renderTrandFilms(images);
   });
 };
 
 function search(event) {
-  console.log(event)
+  gallery.innerHTML = ""
   const currentPage = event.page;
-  console.log(currentPage)
   fetchSearchFilms(value, currentPage).then(({ results: images }) => {
      renderSearchFilms(images);
   });
-}
-function popular(event) {
-  refs.gallery.innerHTML = ""
-  const currentPage = event.page;
-     getImg(currentPage).then((photo) => {
-       renderGallery(photo.data)
-      })
-}
+};
