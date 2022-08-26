@@ -1,7 +1,8 @@
 .container {
+    background-color: teal;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
         @media screen and (min-width: 480px) {
@@ -13,6 +14,7 @@
 @media screen and (min-width: 768px) {
     .container {
         width: 768px;
+        padding: 0 30px;
     }
 }
 
