@@ -1,21 +1,60 @@
+  .gallery {
+        padding-top: 20px;
+          padding-bottom: 40px;
+
+          @media screen and (min-width:768px) {
+      padding-top: 60px;
+        padding-bottom: 60px;
+          }
+  }
   .gallery__list {
     min-height: 100%;
-    padding: 20px 20px 40px 20px;
     margin: 0 auto;
-  }
-  
-  .gallery__item {
-    min-width: 320px;
-    &:not(:last-child) {
-      margin-bottom: 20px;
+
+    @media screen and (min-width:768px) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -15px;
     }
-    
+
+         @media screen and (min-width:1280px) {
+          margin: 0;
+          justify-content: flex-start;
+         }
   }
+
+  .gallery__item {
+   @media screen and (max-width: 479px) {
+    &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+   }
+
+    @media screen and (min-width: 480px) {
+      max-width: 440px;
+    }
+
+         @media screen and (min-width: 768px) and (max-width:1279px) {
+          margin: 15px;
+           max-width: 339px;
+         }
+
+        @media screen and (min-width: 1280px) {
+        max-width: 395px;
+
+        &:not(:nth-child(3n + 3)) {
+          margin: 0;
+            margin-right: 15px;
+          }
+        }
+  }
+
   .gallery__item:hover {
     transform: scale(1.03);
   }
 
-    .gallery__wrapper {
+  .gallery__wrapper {
+    position: relative;
     display: block;
     flex-grow: 1;
   }
@@ -28,8 +67,8 @@
     max-width: 767px;
     margin-bottom: 10px;
   }
-  
-  .gallery__name { 
+
+  .gallery__name {
     @include font-style(500, 12px, 14px, 0);
     text-transform: uppercase;
     text-overflow: ellipsis;
@@ -37,16 +76,20 @@
     white-space: nowrap;
     color: var(--extra-color);
   }
-    
-  .gallery__year, .gallery__genres {
-   display: inline-block; 
-   @include font-style(500, 12px, 14px, 0);
+
+  .gallery__year,
+  .gallery__genres {
+    display: inline-block;
+    @include font-style(500, 12px, 14px, 0);
     color: var(--accent-color);
   }
-  
+
   .gallery__vote {
+    position: absolute;
+    top: 0;
+    right: 0;
     background: var(--accent-color);
-    color: var(--main-color); 
+    color: var(--main-color);
     @include font-style(500, 12px, 14px, 0);
     align-items: center;
     padding: 1px 8px;
@@ -54,7 +97,7 @@
     margin-left: 4px;
   }
 
- .gallery__genres::after{
+  .gallery__genres::after {
     content: '|';
     margin-left: 4px;
   }
