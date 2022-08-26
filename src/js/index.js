@@ -16,6 +16,7 @@ import {
   fetchTrendFilms,
   fetchSearchFilms,
   fetchSearchFilmById,
+  fetchGenres,
 } from './fetch-films';
 
 import Pagination from 'tui-pagination';
