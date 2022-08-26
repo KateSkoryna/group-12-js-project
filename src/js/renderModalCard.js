@@ -1,4 +1,4 @@
-import { modal, backdrop } from './refs';
+import { modal } from './refs';
 
 export default function renderModalCard(id) {
   modal.innerHTML = '';
