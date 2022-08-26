@@ -41,6 +41,12 @@
 
         @media screen and (min-width: 1280px) {
         max-width: 395px;
+        margin-top: 0;
+        margin-left: 0;
+
+        &:not(:nth-last-child(-n +2)) {
+          margin-bottom: 30px;
+        }
 
         &:not(:nth-child(3n + 3)) {
           margin: 0;
