@@ -44,6 +44,19 @@ async function fetchSearchFilmById(id) {
   }
 }
 
+async function fetchGenres() {
+  const url = 'https://api.themoviedb.org/3/genre/movie/list';
+  const KEY = 'fd7341fdf0f2e94a335192ece09ea376';
+
+    try {
+      const { data } = await axios.get(`${url}?api_key=${KEY}`);
+        return data;
+
+    } catch (error) {
+      console.error('Something wrong!' + error);
+    }
+}
+
 // функция без аргумента
 
 // async function fetchAllFilms() {
@@ -58,4 +71,4 @@ async function fetchSearchFilmById(id) {
 //     }
 // }
 
-export { fetchTrendFilms, fetchSearchFilms, fetchSearchFilmById };
+export { fetchTrendFilms, fetchSearchFilms, fetchSearchFilmById, fetchGenres };

@@ -18,6 +18,7 @@ import {
   fetchTrendFilms,
   fetchSearchFilms,
   fetchSearchFilmById,
+  fetchGenres,
 } from './fetch-films';
 
 
