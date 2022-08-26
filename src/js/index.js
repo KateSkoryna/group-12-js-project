@@ -103,3 +103,34 @@ function popular(event) {
 //        renderGallery(photo.data)
 //       })
 // }
+
+//gallery.addEventListener('click', onGalleryCardClick);
+
+
+//function onGalleryCardClick(event) {
+  //event.preventDefault();
+ // console.log(event.target.dataset.id)
+ // const cardId = event.target.dataset.id
+//}
+//const cardId = event.target.dataset.id
+    //const findId = response.id.filter(value === cardID)
+    //(response => {
+    //  if (response.id === cardId) {
+    //    return toggleModal()
+    //  }
+    //}).then ()
+   // return response.json();
+  //})
+  //.then(data => {
+    // Data handling
+  //})
+  // if (dataTotalHits > photoAmount) {
+    //loadMore.classList.remove('is-hidden');
+  //} else {
+  //  return;
+  //} 
+ // if (cardId === findId) {
+  //  return  renderModalCard(cardId)
+ // }
+//}
+
