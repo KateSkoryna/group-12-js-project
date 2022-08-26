@@ -44,20 +44,6 @@ fetchTrendFilms(page).then(({total_pages: totalPages, results: images }) => {
 
 form.addEventListener('submit', onClickRead);
 
-// const options = {
-//   totalItems: 0,
-//   itemsPerPage: 20,
-//   visiblePages: 5,
-//   centerAlign: true,
-//   page: 1,
-// };
-// const paganation = new Pagination(
-//   document.getElementById('pagination'),
-//   options
-// );
-
-// const page = paganation.getCurrentPage();
-
 paganation.on('afterMove', popular);
 
 function onClickRead(event) {
@@ -88,7 +74,6 @@ function onClickRead(event) {
 }
 
 function popular(event) {
-  // gallery.innerHTML = ""
   console.log(event)
   const currentPage = event.page;
   console.log(currentPage)
@@ -96,10 +81,10 @@ function popular(event) {
      renderTrandFilms(images);
   });
 }
-// function popular(event) {
-//   refs.gallery.innerHTML = ""
-//   const currentPage = event.page;
-//      getImg(currentPage).then((photo) => {
-//        renderGallery(photo.data)
-//       })
-// }
+function popular(event) {
+  refs.gallery.innerHTML = ""
+  const currentPage = event.page;
+     getImg(currentPage).then((photo) => {
+       renderGallery(photo.data)
+      })
+}
