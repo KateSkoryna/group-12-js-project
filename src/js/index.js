@@ -1,3 +1,5 @@
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.min.css';
 import {
   form,
   gallery,
@@ -18,8 +20,7 @@ import {
   fetchSearchFilmById,
 } from './fetch-films';
 
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
+
 
 form.addEventListener('submit', onClickRead);
 
@@ -48,7 +49,7 @@ function onClickRead(event) {
     Notify.failure('enter text!');
     return;
   }
-  paganation.off('afterMove', popular);
+  // paganation.off('afterMove', popular);
 
   fetchSearchFilms(value, page).then(
     ({ total, total_pages: totalPages, results: images }) => {
@@ -59,15 +60,26 @@ function onClickRead(event) {
       }
 
       paginationEl.classList.remove('visually-hidden');
-      paganation.reset(total);
-      return renderTrandFilms(images);
+      paganation.reset(totalPages);
+      renderTrandFilms(images);
+      
     }
   );
 }
 
 function popular(event) {
+  // gallery.innerHTML = ""
+  console.log(event)
   const currentPage = event.page;
+  console.log(currentPage)
   fetchTrendFilms(currentPage).then(({ results: images }) => {
-    return renderTrandFilm(images);
+     renderTrandFilms(images);
   });
 }
+// function popular(event) {
+//   refs.gallery.innerHTML = ""
+//   const currentPage = event.page;
+//      getImg(currentPage).then((photo) => {
+//        renderGallery(photo.data)
+//       })
+// }
