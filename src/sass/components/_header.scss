@@ -25,7 +25,7 @@
     background-size: cover;
     
 
-    max-width: 480px;
+    max-width: 768px;
    
 
     background-image: url(/src/images/Mobile/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
@@ -39,7 +39,7 @@
     }
 
     @media screen and (min-width: 768px) {
-        max-width: 768px;
+        max-width: 1280px;
 
         background-image: url(/src/images/Tablet/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 
@@ -52,7 +52,7 @@
     }
 
     @media screen and (min-width: 1280px) {
-        max-width: 1280px;
+        max-width: 1680px;
         background-image: url(/src/images/Desktop/abstract-background-with-red-lines-1.jpg), linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
             
 
