@@ -57,6 +57,7 @@ async function fetchGenres() {
     }
 }
 
+
 // функция без аргумента
 
 // async function fetchAllFilms() {
