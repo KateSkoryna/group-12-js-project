@@ -46,6 +46,7 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
 });
 
 form.addEventListener('submit', onClickRead);
+let value = null;
 
 paganation.on('afterMove', popular);
 
