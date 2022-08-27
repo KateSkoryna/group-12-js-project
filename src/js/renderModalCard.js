@@ -27,7 +27,9 @@ export default function renderModalCard(movie) {
                     <li class="modal__item">Genre</li>
                 </ul>
                 <ul class="modal__list-render">
-                    <li class="modal__item-render"><span class="modal__item-vote">${vote_average}</span> <span class="modal__item-slash">/</span>
+                    <li class="modal__item-render"><span class="modal__item-vote">${
+                      Math.round(vote_average * 10) / 10
+                    }</span> <span class="modal__item-slash">/</span>
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render">${original_title}</li>
