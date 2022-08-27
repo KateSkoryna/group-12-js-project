@@ -1,10 +1,23 @@
 .container {
         margin-left: auto;
         margin-right: auto;
-        padding: 0 20px;
+        padding: 0;
+       
     }
 
-        @media screen and (min-width: 480px) {
+         @media screen and (min-width: 280px) and (max-width: 300px) {
+           
+             .tui-prev {
+                margin-right: 0 !important;
+             }
+             .tui-next {
+                margin-left: 0 !important;
+             }
+
+         }
+        
+
+        @media screen and (min-width: 480px) and (max-width: 480px) {
             .container {
                 width: 480px;
             }
