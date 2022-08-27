@@ -2,6 +2,8 @@ import { gallery } from './refs';
 import { backdrop, modalCloseBtn } from './refs';
 import { renderModalCard } from './renderModalCard';
 import { gnrArr } from './fetch-films';
+import { onEscPress } from './renderModalCard';
+
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
@@ -47,6 +49,7 @@ function renderTrandFilms(data) {
   function openModal(e) {
     console.log(backdrop);
     backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
 
     const value = parseInt(e.target.dataset.id);
     if (!value) {

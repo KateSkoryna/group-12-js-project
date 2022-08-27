@@ -6,6 +6,7 @@
     height: 100%;
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.25);
+    background-attachment: fixed, fixed;
     transition: transform 250ms linear;
     z-index: 10;
 
@@ -26,13 +27,17 @@
 
 .modal {
     display: flex;
+    flex-direction: column;
    position: absolute;
    top: 20px;
    left: 20px;
    right: 20px;
    background-color: var(--main-color);
    padding: 40px 20px;
+
+background-attachment: fixed, fixed;;
    }
+  
 
 .modal__close-btn {
     position: absolute;
@@ -45,6 +50,13 @@
     transition: color .25s cubic-bezier(.4, 0, .2, 1);
     color: black;
     cursor: pointer;
+}
+.modal__close-btn:hover .modal__close-icon {
+    &:hover,
+        &:focus {
+            color: var(--accent-color);
+            transform: scale(2);
+        }
 }
 
 .modal__close-icon {
@@ -59,13 +71,14 @@
 .modal__poster {
     width: 100%;
     border-radius: 5px;
+    
 }
 .modal__title {
     font-family: var(--font-family-main);
-    @include font-style (500, 20px, 23.44px, 0.08em);
-    // font-weight: 500;
-    // font-size: 20px;
-    // line-height: 1.15;
+   // @include font-style (500, 20px, 23.44px, 0.08em);
+     font-weight: 500;
+     font-size: 20px;
+     line-height: 1.15;
     margin-bottom: 20px;
 
 }
@@ -151,6 +164,13 @@
     border-color: var(--extra-color);
     border-radius: 5px;
     background-color: var(--main-color);
+    &:hover,
+    &:focus {
+        background-color: var(--main-color);
+        background-color: var(--second-accent-color);
+        border: 1px solid var(--second-accent-color);
+        color: var(--main-color);
+    }
   
 }
 .modal__watch-btn {
@@ -161,10 +181,12 @@
 @media screen and (min-width: 768px) {
     .modal {
         width: 704px;
-        height: 552px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        display: flex;
+    }
+    .modal__render-box {
         display: flex;
     }
     .modal__poster-wrap {

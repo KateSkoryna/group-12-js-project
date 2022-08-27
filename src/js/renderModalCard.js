@@ -1,8 +1,8 @@
-import { modal } from './refs';
+import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
 
 export default function renderModalCard(movie) {
-  modal.innerHTML = '';
+  modalRenderBox.innerHTML = '';
   const {
     poster_path,
     title,
@@ -14,12 +14,7 @@ export default function renderModalCard(movie) {
     overview,
   } = movie;
 
-  const markup = `<button type="button" class="modal__close-btn" data-modal-close>
-            <svg class="modal__close-icon">
-                <use href="./images/sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal__poster-wrap">
+  const markup = `<div class="modal__poster-wrap">
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
         </div>
         <div class="modal__card">
@@ -32,7 +27,9 @@ export default function renderModalCard(movie) {
                     <li class="modal__item">Genre</li>
                 </ul>
                 <ul class="modal__list-render">
-                    <li class="modal__item-render"><span class="modal__item-vote">${vote_average}</span> <span class="modal__item-slash">/</span>
+                    <li class="modal__item-render"><span class="modal__item-vote">${
+                      Math.round(vote_average * 10) / 10
+                    }</span> <span class="modal__item-slash">/</span>
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render">${original_title}</li>
@@ -41,22 +38,38 @@ export default function renderModalCard(movie) {
                 </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
-                <div class="modal__button-wrap">
-                <button class="modal__watch-btn modal__btn" type="button">add to Watched</button>
-                <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
-            </div>
         </div>`;
-  modal.insertAdjacentHTML('beforeend', markup);
+  modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
   // Какого-то хрена выдает Null на кнопки ниже. Гляньте все. Рефы проверяла.
 
   modalWatchBtn.addEventListener('click', addToWatched);
   modalQueueBtn.addEventListener('click', addToQueue);
-  modalCloseBtn.addEventListener('click', closeModal);
+  // modalCloseBtn.addEventListener('click', closeModal);
 
-  function closeModal(e) {
-    backdrop.classList.add('is-hidden');
+  //function closeModal(e) {
+  // backdrop.classList.add('is-hidden');
+  // }
+}
+modalCloseBtn.addEventListener('click', onCloseModal);
+backdrop.addEventListener('click', onBackdropClick);
+
+function onCloseModal(event) {
+  window.removeEventListener('keydown', onEscPress);
+  backdrop.classList.add('is-hidden');
+}
+
+function onBackdropClick(e) {
+  e.preventDefault();
+
+  if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
+    onCloseModal();
+  }
+}
+function onEscPress(event) {
+  if (event.code === 'Escape') {
+    onCloseModal();
   }
 }
 
-export { renderModalCard };
+export { renderModalCard, onEscPress };
