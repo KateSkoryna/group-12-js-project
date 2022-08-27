@@ -1,6 +1,5 @@
 import { modal } from './refs';
-import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
-
+import { modalCloseBtn, modalQueueBtn, modalWatchBtn, backdrop } from './refs';
 export default function renderModalCard(movie) {
   modal.innerHTML = '';
   const {
@@ -14,12 +13,7 @@ export default function renderModalCard(movie) {
     overview,
   } = movie;
 
-  const markup = `<button type="button" class="modal__close-btn" data-modal-close>
-            <svg class="modal__close-icon">
-                <use href="./images/sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal__poster-wrap">
+  const markup = `<div class="modal__poster-wrap">
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
         </div>
         <div class="modal__card">
@@ -41,22 +35,22 @@ export default function renderModalCard(movie) {
                 </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
-                <div class="modal__button-wrap">
-                <button class="modal__watch-btn modal__btn" type="button">add to Watched</button>
-                <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
-            </div>
         </div>`;
   modal.insertAdjacentHTML('beforeend', markup);
 
   // Какого-то хрена выдает Null на кнопки ниже. Гляньте все. Рефы проверяла.
 
-  modalWatchBtn.addEventListener('click', addToWatched);
-  modalQueueBtn.addEventListener('click', addToQueue);
-  modalCloseBtn.addEventListener('click', closeModal);
+    
 
-  function closeModal(e) {
+}
+//  
+//   modalQueueBtn.addEventListener('click', addToQueue);
+  modalQueueBtn.addEventListener('click', closeModal);
+
+    function closeModal(e) {
+    
     backdrop.classList.add('is-hidden');
   }
-}
+
 
 export { renderModalCard };

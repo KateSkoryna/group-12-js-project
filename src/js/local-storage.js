@@ -5,6 +5,7 @@
 // const arrayQueueFilms = [];
 
 // function addToWatched(data) {
+
 //   const watchedFilm = 'remove from watched';
 
 //   if (modalWatchBtn.textContent === watchedFilm) {
@@ -33,34 +34,40 @@
 //   });
 // }
 
-// function addToQueue(data) {
-//   const queueFilm = 'remove from queue';
+// // function addToQueue(data) {
+// //   const queueFilm = 'remove from queue';
 
-//   if (modalQueueBtn.textContent === queueFilm) {
-//     modalQueueBtn.textContent = 'add to queue';
-//     removeFilmQueue();
-//     updateQueueFilms();
-//     return;
-//   }
+// //   if (modalQueueBtn.textContent === queueFilm) {
+// //     modalQueueBtn.textContent = 'add to queue';
+// //     removeFilmQueue();
+// //     updateQueueFilms();
+// //     return;
+// //   }
 
-//   modalQueueBtn.textContent = queueFilm;
-//   arrayQueueFilms.push({ data });
-//   localStorage.setItem('queue', JSON.stringify(arrayQueueFilms));
+// //   modalQueueBtn.textContent = queueFilm;
+// //   arrayQueueFilms.push({ data });
+// //   localStorage.setItem('queue', JSON.stringify(arrayQueueFilms));
 
-//   updateQueueFilms();
-// }
+// //   updateQueueFilms();
+// // }
 
-// function removeFilmQueue(data) {
-//   const newIndex = arrayQueueFilms.indexOf(data);
-//   const updatedQueueFilms = arrayQueueFilms.splice(newIndex, 1);
-//   localStorage.setItem('queue', JSON.stringify(updatedQueueFilms));
-// }
-// function updateQueueFilms() {
-//   const queueFilmsFromStorage = JSON.parse(localStorage.getItem('list'));
+// // function removeFilmQueue(data) {
+// //   const newIndex = arrayQueueFilms.indexOf(data);
+// //   const updatedQueueFilms = arrayQueueFilms.splice(newIndex, 1);
+// //   localStorage.setItem('queue', JSON.stringify(updatedQueueFilms));
+// // }
+// // function updateQueueFilms() {
+// //   const queueFilmsFromStorage = JSON.parse(localStorage.getItem('list'));
 
-//   queueFilmsFromStorage.forEach(film => {
-//     renderTrandFilms(film);
-//   });
-// }
+// //   queueFilmsFromStorage.forEach(film => {
+// //     renderTrandFilms(film);
+// //   });
+// // }
 
-// export { addToWatched, addToQueue };
+
+  
+// //   modalQueueBtn.addEventListener('click', addToQueue);
+
+
+
+// // export { addToWatched, addToQueue };
