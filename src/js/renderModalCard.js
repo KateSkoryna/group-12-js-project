@@ -1,8 +1,8 @@
-import { modal } from './refs';
+import { modal, backdrop, modalRenderBox} from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
 
 export default function renderModalCard(movie) {
-  modal.innerHTML = '';
+   modalRenderBox.innerHTML = '';
   const {
     poster_path,
     title,
@@ -14,12 +14,7 @@ export default function renderModalCard(movie) {
     overview,
   } = movie;
 
-  const markup = `<button type="button" class="modal__close-btn" data-modal-close>
-            <svg class="modal__close-icon">
-                <use href="./images/sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal__poster-wrap">
+  const markup = `<div class="modal__poster-wrap">
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
         </div>
         <div class="modal__card">
@@ -46,17 +41,42 @@ export default function renderModalCard(movie) {
                 <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
             </div>
         </div>`;
-  modal.insertAdjacentHTML('beforeend', markup);
+  modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
   // Какого-то хрена выдает Null на кнопки ниже. Гляньте все. Рефы проверяла.
 
   modalWatchBtn.addEventListener('click', addToWatched);
   modalQueueBtn.addEventListener('click', addToQueue);
-  modalCloseBtn.addEventListener('click', closeModal);
+ // modalCloseBtn.addEventListener('click', closeModal);
 
-  function closeModal(e) {
-    backdrop.classList.add('is-hidden');
-  }
+  //function closeModal(e) {
+   // backdrop.classList.add('is-hidden');
+ // }
 }
+modalCloseBtn.addEventListener('click', onCloseModal);
+backdrop.addEventListener('click', onBackdropClick);
+
+function onCloseModal(event) {
+   window.removeEventListener('keydown', onEscPress);
+    backdrop.classList.add('is-hidden');
+}
+
+function onBackdropClick(e) {
+    e.preventDefault();
+   
+   if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
+           onCloseModal()
+        }
+}
+function onEscPress(event) {
+    //event.preventDefault();
+      console.log(event)
+      
+     // if (event.key === 'Escape') {
+    //      onCloseModal();
+    //  }
+       
+};
+
 
 export { renderModalCard };

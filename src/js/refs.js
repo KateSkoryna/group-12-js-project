@@ -11,6 +11,7 @@ const myLibQueueBtn = document.querySelector('.header__queue-btn');
 const btnToTop = document.querySelector('.back-to-top');
 const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
+const modalRenderBox = document.querySelector('.modal__render-box');
 
 export {
   form,
@@ -26,4 +27,5 @@ export {
   btnToTop,
   backdrop,
   modal,
+  modalRenderBox,
 };
