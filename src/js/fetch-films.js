@@ -2,8 +2,12 @@ import axios from 'axios';
 import { page } from './index';
 const KEY = 'fd7341fdf0f2e94a335192ece09ea376';
 
+<<<<<<< Updated upstream
 export let gnrArr = []
 
+=======
+const gnrArr = {}
+>>>>>>> Stashed changes
 // функция для пагинации
 
 async function fetchTrendFilms(page) {
@@ -51,7 +55,11 @@ async function fetchGenres() {
 
     try {
       const { data } = await axios.get(`${url}?api_key=${KEY}`);
+<<<<<<< Updated upstream
       // console.log(data)
+=======
+      console.log(data)
+>>>>>>> Stashed changes
         return data;
 
     } catch (error) {
@@ -60,12 +68,19 @@ async function fetchGenres() {
 }
 fetchGenres().then(gener => {
   const arr = gener.genres
+<<<<<<< Updated upstream
   const item = arr.map(i => i)
   gnrArr.push(item)
   return item
 })
 // fetchGenres()
 
+=======
+  const item = arr.map(i => console.log(i))
+  gnrArr[item.id] = name
+
+})
+>>>>>>> Stashed changes
 
 // функция без аргумента
 

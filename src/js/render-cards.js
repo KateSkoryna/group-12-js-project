@@ -14,10 +14,14 @@ function renderTrandFilms(data) {
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
+<<<<<<< Updated upstream
         const res = idArr.filter((i) => {
           return genre_ids.includes(i.id)
         })
         const genreNames = res.map(i => i.name)
+=======
+        // console.log(data)
+>>>>>>> Stashed changes
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
