@@ -36,7 +36,6 @@ export default function renderModalCard(movie) {
                 </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
-
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
