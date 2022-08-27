@@ -13,7 +13,8 @@ const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
 const modalRenderBox = document.querySelector('.modal__render-box');
 const ref = {
-  spinner: document.querySelector("#spinner")
+  spinner: document.querySelector('#spinner'),
+};
 
 export {
   ref,

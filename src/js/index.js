@@ -14,7 +14,7 @@ import {
   footerTeamLink,
   myLibWatchBtn,
   myLibQueueBtn,
-  ref
+  spiner,
 } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
@@ -40,8 +40,7 @@ const paganation = new Pagination(
 const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
 
-const spinner = new Spinner(opts).spin(ref.spinner)
-
+const spinner = new Spinner(opts).spin(ref.spinner);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
@@ -49,7 +48,7 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   renderTrandFilms(images);
   paganation.on('afterMove', popular);
   paganation.off('afterMove', search);
- spinner.stop()
+  spinner.stop();
 });
 
 form.addEventListener('submit', onClickRead);
@@ -59,7 +58,7 @@ paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();
-const spinner = new Spinner(opts).spin(ref.spinner)    ////create spinner
+  const spinner = new Spinner(opts).spin(ref.spinner); ////create spinner
   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
@@ -70,7 +69,7 @@ const spinner = new Spinner(opts).spin(ref.spinner)    ////create spinner
   fetchSearchFilms(value, page).then(
     ({ total_pages: totalPages, results: images }) => {
       form.reset();
-      spinner.stop()   ////stoping spinner
+      spinner.stop(); ////stoping spinner
       if (images.length === 0) {
         paginationEl.classList.add('visually-hidden');
         Notify.failure(`Images by not found!`);
@@ -87,21 +86,21 @@ const spinner = new Spinner(opts).spin(ref.spinner)    ////create spinner
 }
 
 function popular(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner)
+  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchTrendFilms(currentPage).then(({ results: images }) => {
     renderTrandFilms(images);
-    spinner.stop()
+    spinner.stop();
   });
 }
 
 function search(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner)
+  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchSearchFilms(value, currentPage).then(({ results: images }) => {
     renderSearchFilms(images);
-    spinner.stop()
+    spinner.stop();
   });
 }
