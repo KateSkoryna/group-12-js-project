@@ -18,6 +18,7 @@ function renderTrandFilms(data) {
           return genre_ids.includes(i.id)
         })
         const genreNames = res.map(i => i.name)
+       const genreNamesSlice = genreNames.slice(0, 2)
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -32,7 +33,7 @@ function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genreNames}</p>
+        <p class="gallery__genres" data-id=${id}>${genreNamesSlice}, Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
