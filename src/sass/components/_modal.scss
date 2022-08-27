@@ -1,5 +1,4 @@
 .backdrop {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -26,6 +25,7 @@
 }
 
 .modal {
+    display: flex;
    position: absolute;
    top: 20px;
    left: 20px;
@@ -49,8 +49,6 @@
 
 .modal__close-icon {
     @include size(18px, 18px);
-    width: 18px;
-    height: 18px;
     stroke: currentColor;
 }
 

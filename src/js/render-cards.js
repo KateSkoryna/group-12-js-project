@@ -1,4 +1,6 @@
 import { gallery } from './refs';
+import { backdrop, modalCloseBtn } from './refs';
+import { renderModalCard } from './renderModalCard';
 
 // рендер трендовых фильмов
 
@@ -29,7 +31,21 @@ function renderTrandFilms(data) {
     )
     .join('');
   gallery.innerHTML = markup;
-  return gallery;
+
+  gallery.addEventListener('click', openModal);
+
+  function openModal(e) {
+    console.log(backdrop);
+    backdrop.classList.remove('is-hidden');
+
+    const value = parseInt(e.target.dataset.id);
+    if (!value) {
+      return;
+    }
+    const arr = [...data].filter(movie => movie.id === value);
+    const movie = arr[0];
+    renderModalCard(movie);
+  }
 }
 
 function renderSearchFilms(data) {
@@ -60,7 +76,6 @@ function renderSearchFilms(data) {
     )
     .join('');
   gallery.innerHTML = markup;
-  return gallery;
 }
 
 export { renderTrandFilms, renderSearchFilms };

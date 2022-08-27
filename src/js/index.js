@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
+
 import {
   form,
   gallery,
@@ -33,8 +34,8 @@ const paganation = new Pagination(
   options
 );
 
- const page = paganation.getCurrentPage();
- paganation.on('afterMove', search);
+const page = paganation.getCurrentPage();
+paganation.on('afterMove', search);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
@@ -42,16 +43,16 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   renderTrandFilms(images);
   paganation.on('afterMove', popular);
   paganation.off('afterMove', search);
-})
-  
+});
+
 form.addEventListener('submit', onClickRead);
 
 paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();
-  
-   value = event.target.query.value.toLowerCase().trim();
+
+  value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
     Notify.failure('enter text!');
@@ -60,34 +61,34 @@ function onClickRead(event) {
 
   fetchSearchFilms(value, page).then(
     ({ total_pages: totalPages, results: images }) => {
-      form.reset()
+      form.reset();
       if (images.length === 0) {
         paginationEl.classList.add('visually-hidden');
         Notify.failure(`Images by not found!`);
         return;
-      };
+      }
 
       paginationEl.classList.remove('visually-hidden');
       renderSearchFilms(images);
       paganation.reset(totalPages);
-     paganation.on('afterMove', search);
-     paganation.off('afterMove', popular);
+      paganation.on('afterMove', search);
+      paganation.off('afterMove', popular);
     }
   );
-};
+}
 
 function popular(event) {
-  gallery.innerHTML = ""
+  gallery.innerHTML = '';
   const currentPage = event.page;
   fetchTrendFilms(currentPage).then(({ results: images }) => {
-     renderTrandFilms(images);
+    renderTrandFilms(images);
   });
-};
+}
 
 function search(event) {
-  gallery.innerHTML = ""
+  gallery.innerHTML = '';
   const currentPage = event.page;
   fetchSearchFilms(value, currentPage).then(({ results: images }) => {
-     renderSearchFilms(images);
+    renderSearchFilms(images);
   });
-};
+}
