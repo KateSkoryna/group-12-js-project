@@ -1,8 +1,8 @@
-import { modal, backdrop, modalRenderBox} from './refs';
+import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
 
 export default function renderModalCard(movie) {
-   modalRenderBox.innerHTML = '';
+  modalRenderBox.innerHTML = '';
   const {
     poster_path,
     title,
@@ -47,36 +47,34 @@ export default function renderModalCard(movie) {
 
   modalWatchBtn.addEventListener('click', addToWatched);
   modalQueueBtn.addEventListener('click', addToQueue);
- // modalCloseBtn.addEventListener('click', closeModal);
+  // modalCloseBtn.addEventListener('click', closeModal);
 
   //function closeModal(e) {
-   // backdrop.classList.add('is-hidden');
- // }
+  // backdrop.classList.add('is-hidden');
+  // }
 }
 modalCloseBtn.addEventListener('click', onCloseModal);
 backdrop.addEventListener('click', onBackdropClick);
 
 function onCloseModal(event) {
-   window.removeEventListener('keydown', onEscPress);
-    backdrop.classList.add('is-hidden');
+  window.removeEventListener('keydown', onEscPress);
+  backdrop.classList.add('is-hidden');
 }
 
 function onBackdropClick(e) {
-    e.preventDefault();
-   
-   if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
-           onCloseModal()
-        }
+  e.preventDefault();
+
+  if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
+    onCloseModal();
+  }
 }
 function onEscPress(event) {
-    //event.preventDefault();
-      console.log(event)
-      
-     // if (event.key === 'Escape') {
-    //      onCloseModal();
-    //  }
-       
-};
+  //event.preventDefault();
+  console.log(event);
 
+  // if (event.key === 'Escape') {
+  //      onCloseModal();
+  //  }
+}
 
-export { renderModalCard };
+export { renderModalCard, onEscPress };
