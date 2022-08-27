@@ -11,9 +11,9 @@ const myLibQueueBtn = document.querySelector('.header__queue-btn');
 const btnToTop = document.querySelector('.back-to-top');
 const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
+const modalRenderBox = document.querySelector('.modal__render-box');
 const ref = {
   spinner: document.querySelector("#spinner")
-}
 
 export {
   ref,
@@ -31,4 +31,5 @@ export {
   btnToTop,
   backdrop,
   modal,
+  modalRenderBox,
 };
