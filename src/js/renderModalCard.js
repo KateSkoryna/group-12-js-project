@@ -36,10 +36,7 @@ export default function renderModalCard(movie) {
                 </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
-                <div class="modal__button-wrap">
-                <button class="modal__watch-btn modal__btn" type="button">add to Watched</button>
-                <button class="modal__queueBtn modal__btn" type="button">add to queue</button>
-            </div>
+
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
@@ -69,12 +66,9 @@ function onBackdropClick(e) {
   }
 }
 function onEscPress(event) {
-  //event.preventDefault();
-  console.log(event);
-
-  // if (event.key === 'Escape') {
-  //      onCloseModal();
-  //  }
+  if (event.code === 'Escape') {
+    onCloseModal();
+  }
 }
 
 export { renderModalCard, onEscPress };
