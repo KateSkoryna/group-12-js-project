@@ -31,7 +31,7 @@ function renderTrandFilms(data) {
       }
     )
     .join('');
-  gallery.innerHTML = markup;
+  gallery.insertAdjacentHTML("beforeend", markup);
 
   gallery.addEventListener('click', openModal);
 
@@ -77,7 +77,7 @@ function renderSearchFilms(data) {
       }
     )
     .join('');
-  gallery.innerHTML = markup;
+  gallery.insertAdjacentHTML("beforeend", markup);
 }
 
 export { renderTrandFilms, renderSearchFilms };
