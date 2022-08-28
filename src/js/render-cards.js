@@ -24,6 +24,9 @@ function renderTrandFilms(data) {
         if (genreNames.length >= 2) {
           genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
         };
+         if (genreNames.length === 1) {
+          genreNamesSlice.push(`${genreNames.slice(0, 1) + ","}`);
+        };
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -80,6 +83,9 @@ function renderSearchFilms(data) {
        const genreNamesSlice = []
         if (genreNames.length >= 2) {
           genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
+        };
+         if (genreNames.length === 1) {
+          genreNamesSlice.push(`${genreNames.slice(0, 1) + ","}`);
         };
         const year = parseInt(release_date);
         const rating = vote_average.toFixed(1);
