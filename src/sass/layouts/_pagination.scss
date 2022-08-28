@@ -16,6 +16,16 @@
     margin: 0;
 }
 
+
+
+@media screen and (min-width: 768px) and (max-width:1400px) {
+    .tui-page-btn {
+            height: 40px !important;
+            width: 40px !important;
+    
+        }
+}
+
  @media screen and (min-width: 280px) and (max-width: 310px) {
 .tui-pagination {
     display: flex;
