@@ -5,17 +5,23 @@ const WATCHSTORAGE_KEY = 'watchStorage';
 const QUEUESTORAGE_KEY = 'queueStorage';
 
 function addToWatched(e, id) {
-  let data = localStorage.getItem(WATCHSTORAGE_KEY);
-  data = data ? JSON.parse(data) : [];
-  const index = data.indexOf(id);
+  let arr = localStorage.getItem(WATCHSTORAGE_KEY);
+  arr = arr ? JSON.parse(arr) : [];
+  console.log(arr);
+  const movieId = String(id);
+  console.log(movieId);
+  const index = arr.includes(movieId);
   console.log(index);
-  console.log(data);
-  if (index < 0) {
-    const movieId = JSON.stringify(id);
-    localStorage.setItem(WATCHSTORAGE_KEY, movieId);
+  console.log(movieId);
+  if (!index) {
+    arr.push(movieId);
+    const movieEl = JSON.stringify(arr);
+    localStorage.setItem(WATCHSTORAGE_KEY, movieEl);
     modalWatchBtn.textContent = 'watched';
   } else {
-    data.splice(id);
+    arr.splice(movieId, 1);
+    localStorage.removeItem(WATCHSTORAGE_KEY);
+    localStorage.setItem(WATCHSTORAGE_KEY, arr);
     modalWatchBtn.textContent = 'add to watched';
   }
 
