@@ -1,6 +1,6 @@
 import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
-import { checkWatchBtn } from './local-storage';
+import { checkWatchBtn, checkQueueBtn } from './local-storage';
 
 const WATCHSTORAGE_KEY = 'watchStorage';
 const QUEUESTORAGE_KEY = 'queueStorage';
@@ -22,7 +22,10 @@ export default function renderModalCard(movie) {
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
   arr = arr ? JSON.parse(arr) : [];
+  let arr2 = localStorage.getItem(QUEUESTORAGE_KEY);
+  arr2 = arr2 ? JSON.parse(arr2) : [];
   const inStorage = arr.find(storageId => storageId === movieId);
+  const inStorage2 = arr2.find(storageId => storageId === movieId);
   console.log('inStorage', inStorage);
 
   const markup = `<div class="modal__poster-wrap">
@@ -55,7 +58,9 @@ export default function renderModalCard(movie) {
   modalWatchBtn.textContent = inStorage ? 'remove' : 'add';
 
   modalWatchBtn.dataset.id = id;
+  modalQueueBtn.dataset.id = id;
   modalWatchBtn.addEventListener('click', checkWatchBtn);
+  modalQueueBtn.addEventListener('click', checkQueueBtn);
   // modalQueueBtn.addEventListener('click', e => addToQueue(e, id));
   //   modalQueueBtn.addEventListener('click', addToQueue);
 }

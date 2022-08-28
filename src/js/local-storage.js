@@ -65,47 +65,48 @@ function addToQueue(id) {
   return;
 }
 
-// function removeFilmFromWatched(data) {
-//   const newIndex = arrayWatchedFilms.indexOf(data);
-//   const updatedWatchedFilms = arrayWatchedFilms.splice(newIndex, 1);
-//   localStorage.setItem('watched films', JSON.stringify(updatedWatchedFilms));
-// }
-// function updateWatchedFilms() {
-//   const watchedFilmsFromStorage = JSON.parse(localStorage.getItem('list'));
+function checkQueueBtn(e) {
+  e.target.dataset.id;
+  const movieId = e.target.dataset.id;
+  console.log('movieId', movieId);
+  let arr1 = localStorage.getItem(QUEUESTORAGE_KEY);
+  arr1 = arr1 ? JSON.parse(arr1) : [];
+  console.log('b11', arr1);
+  const inStorage = arr1.find(storageId => storageId === movieId);
+  console.log('inStorage', inStorage);
+  console.log('b14', arr1);
+  if (!inStorage) {
+    addToQueue(movieId);
+    return;
+  } else {
+    deleteWatch(movieId);
+  }
+}
 
-//   watchedFilmsFromStorage.forEach(film => {
-//     renderTrandFilms(film);
-//   });
-// }
+function addToQueue(id) {
+  let arr2 = localStorage.getItem(QUEUESTORAGE_KEY);
+  arr2 = arr2 ? JSON.parse(arr2) : [];
+  console.log('b', arr2);
+  arr2.push(id);
+  console.log('a', arr2);
+  const movieEl = JSON.stringify(arr2);
+  localStorage.setItem(QUEUESTORAGE_KEY, movieEl);
+  modalQueueBtn.textContent = 'remove';
+  return;
+}
 
-// function addToQueue(data) {
-//   const queueFilm = 'remove from queue';
+function deleteWatch(id) {
+  let arr2 = localStorage.getItem(QUEUESTORAGE_KEY);
+  arr2 = arr2 ? JSON.parse(arr2) : [];
+  const filterArr = arr2.filter(localId => localId !== id);
+  const movieEl = JSON.stringify(filterArr);
 
-//   if (modalQueueBtn.textContent === queueFilm) {
-//     modalQueueBtn.textContent = 'add to queue';
-//     removeFilmQueue();
-//     updateQueueFilms();
-//     return;
-//   }
+  localStorage.setItem(QUEUESTORAGE_KEY, movieEl);
+  modalQueueBtn.textContent = 'add';
+  if (arr2.length === 0) {
+    localStorage.removeItem(QUEUESTORAGE_KEY);
+    return;
+  }
+}
 
-//   modalQueueBtn.textContent = queueFilm;
-//   arrayQueueFilms.push({ data });
-//   localStorage.setItem('queue', JSON.stringify(arrayQueueFilms));
-
-//   updateQueueFilms();
-// }
-
-// function removeFilmQueue(data) {
-//   const newIndex = arrayQueueFilms.indexOf(data);
-//   const updatedQueueFilms = arrayQueueFilms.splice(newIndex, 1);
-//   localStorage.setItem('queue', JSON.stringify(updatedQueueFilms));
-// }
-// function updateQueueFilms() {
-//   const queueFilmsFromStorage = JSON.parse(localStorage.getItem('list'));
-
-//   queueFilmsFromStorage.forEach(film => {
-//     renderTrandFilms(film);
-//   });
-// }
-
-export { checkWatchBtn };
+export { checkWatchBtn, checkQueueBtn };
