@@ -56,6 +56,7 @@ export default function renderModalCard(movie) {
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
   modalWatchBtn.textContent = inStorage ? 'remove' : 'add';
+  modalQueueBtn.textContent = inStorage2 ? 'remove' : 'add';
 
   modalWatchBtn.dataset.id = id;
   modalQueueBtn.dataset.id = id;
