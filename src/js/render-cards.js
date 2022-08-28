@@ -1,15 +1,26 @@
 import { gallery } from './refs';
 import { backdrop, modalCloseBtn } from './refs';
 import { renderModalCard } from './renderModalCard';
+import { gnrArr } from './fetch-films';
 import { onEscPress } from './renderModalCard';
 
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
+  const gnrArrCycle = gnrArr.flatMap(i => i)
+  const idArr = gnrArrCycle.map(i => i)
+  // const nameArr = gnrArrCycle.map(i => i.name)
+  // idArr.map(i => i) /// acces to obj
+
   gallery.innerHTML = '';
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
+        const res = idArr.filter((i) => {
+          return genre_ids.includes(i.id)
+        })
+        const genreNames = res.map(i => i.name)
+       const genreNamesSlice = genreNames.slice(0, 2)
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -26,7 +37,7 @@ function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genre_ids}</p>
+        <p class="gallery__genres" data-id=${id}>${genreNamesSlice}, Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
