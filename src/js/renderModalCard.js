@@ -1,8 +1,11 @@
 import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
 import { addToWatched } from './local-storage';
+import { gnrArr } from './fetch-films';
 
 export default function renderModalCard(movie) {
+  const gnrArrCycle = gnrArr.flatMap(i => i)
+  const idArr = gnrArrCycle.map(i => i)
   modalRenderBox.innerHTML = '';
   const {
     poster_path,
@@ -15,6 +18,12 @@ export default function renderModalCard(movie) {
     genre_ids,
     overview,
   } = movie;
+  const res = idArr.filter((i) => {
+          return genre_ids.includes(i.id);
+        });
+  const genreNames = res.map(i => i.name);
+       const genreNamesArr = []
+        genreNamesArr.push(genreNames)
 
   const markup = `<div class="modal__poster-wrap">
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
@@ -34,8 +43,8 @@ export default function renderModalCard(movie) {
                     }</span> <span class="modal__item-slash">/</span>
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
-                    <li class="modal__item-render">${original_title}</li>
-                    <li class="modal__item-render">${genre_ids}</li>
+                    <li class="modal__item-render modal__original-title">${original_title}</li>
+                    <li class="modal__item-render">${genreNamesArr}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>
@@ -51,7 +60,7 @@ modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
-  backdrop.removeEventListener('click', onBackdropClick);
+  //backdrop.removeEventListener('click', onBackdropClick);
   backdrop.classList.add('is-hidden');
 }
 
