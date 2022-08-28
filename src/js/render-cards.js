@@ -17,10 +17,13 @@ function renderTrandFilms(data) {
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
         const res = idArr.filter((i) => {
-          return genre_ids.includes(i.id)
-        })
-        const genreNames = res.map(i => i.name)
-       const genreNamesSlice = genreNames.slice(0, 2)
+          return genre_ids.includes(i.id);
+        });
+        const genreNames = res.map(i => i.name);
+       const genreNamesSlice = []
+        if (genreNames.length >= 2) {
+          genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
+        };
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -37,7 +40,7 @@ function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genreNamesSlice}, Other</p>
+        <p class="gallery__genres" data-id=${id}>${genreNamesSlice} Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
@@ -64,10 +67,20 @@ function renderTrandFilms(data) {
 }
 
 function renderSearchFilms(data) {
+  const gnrArrCycle = gnrArr.flatMap(i => i)
+  const idArr = gnrArrCycle.map(i => i)
   gallery.innerHTML = '';
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
+        const res = idArr.filter((i) => {
+          return genre_ids.includes(i.id);
+        });
+        const genreNames = res.map(i => i.name);
+       const genreNamesSlice = []
+        if (genreNames.length >= 2) {
+          genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
+        };
         const year = parseInt(release_date);
         const rating = vote_average.toFixed(1);
 
@@ -83,7 +96,7 @@ function renderSearchFilms(data) {
     </div>
     <div class="gallery__thumb">
         <h3 class="gallery__name">${title}</h3>
-        <p class="gallery__genres">${genre_ids}</p>
+        <p class="gallery__genres">${genreNamesSlice} Other</p>
         <span class="gallery__year">${year ? year : 'n/a'}</span>
     </div>
 </li>`;

@@ -82,3 +82,7 @@ fetchGenres().then(gener => {
 // }
 
 export { fetchTrendFilms, fetchSearchFilms, fetchSearchFilmById, fetchGenres };
+
+
+// const genreNamesSlice = []
+//         const genreNames = res.map(i => genreNamesSlice.push(i.name) )
