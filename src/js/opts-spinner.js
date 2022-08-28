@@ -2,9 +2,9 @@ export {opts}
 
 const opts = {
   lines: 13, // The number of lines to draw
-  length: 38, // The length of each line
-  width: 17, // The line thickness
-  radius: 45, // The radius of the inner circle
+  length: 20, // The length of each line
+  width: 12, // The line thickness
+  radius: 25, // The radius of the inner circle
   scale: 1, // Scales overall size of the spinner
   corners: 1, // Corner roundness (0..1)
   speed: 1, // Rounds per second
