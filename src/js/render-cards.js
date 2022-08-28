@@ -7,8 +7,8 @@ import { onEscPress } from './renderModalCard';
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
-  const gnrArrCycle = gnrArr.flatMap(i => i)
-  const idArr = gnrArrCycle.map(i => i)
+  const gnrArrCycle = gnrArr.flatMap(i => i);
+  const idArr = gnrArrCycle.map(i => i);
   // const nameArr = gnrArrCycle.map(i => i.name)
   // idArr.map(i => i) /// acces to obj
 
@@ -16,14 +16,14 @@ function renderTrandFilms(data) {
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
-        const res = idArr.filter((i) => {
+        const res = idArr.filter(i => {
           return genre_ids.includes(i.id);
         });
         const genreNames = res.map(i => i.name);
-       const genreNamesSlice = []
+        const genreNamesSlice = [];
         if (genreNames.length >= 2) {
-          genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
-        };
+          genreNamesSlice.push(`${genreNames.slice(0, 2) + ','}`);
+        }
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -52,7 +52,6 @@ function renderTrandFilms(data) {
   gallery.addEventListener('click', openModal);
 
   function openModal(e) {
-    console.log(backdrop);
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
 
@@ -67,20 +66,20 @@ function renderTrandFilms(data) {
 }
 
 function renderSearchFilms(data) {
-  const gnrArrCycle = gnrArr.flatMap(i => i)
-  const idArr = gnrArrCycle.map(i => i)
+  const gnrArrCycle = gnrArr.flatMap(i => i);
+  const idArr = gnrArrCycle.map(i => i);
   gallery.innerHTML = '';
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
-        const res = idArr.filter((i) => {
+        const res = idArr.filter(i => {
           return genre_ids.includes(i.id);
         });
         const genreNames = res.map(i => i.name);
-       const genreNamesSlice = []
+        const genreNamesSlice = [];
         if (genreNames.length >= 2) {
-          genreNamesSlice.push(`${genreNames.slice(0, 2) + ","}`);
-        };
+          genreNamesSlice.push(`${genreNames.slice(0, 2) + ','}`);
+        }
         const year = parseInt(release_date);
         const rating = vote_average.toFixed(1);
 

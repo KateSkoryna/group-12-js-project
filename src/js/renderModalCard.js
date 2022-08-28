@@ -45,9 +45,10 @@ export default function renderModalCard(movie) {
 
   modalWatchBtn.addEventListener('click', e => addToWatched(e, id));
   //   modalQueueBtn.addEventListener('click', addToQueue);
+
+  backdrop.addEventListener('click', onBackdropClick);
+  modalCloseBtn.addEventListener('click', onCloseModal);
 }
-backdrop.addEventListener('click', onBackdropClick);
-modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
