@@ -7,7 +7,6 @@ import {
   ref,
   form,
   gallery,
-  modal,
   paginationEl,
   galleryListEl,
   modalCloseBtn,
@@ -20,12 +19,7 @@ import {
 } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
-import {
-  fetchTrendFilms,
-  fetchSearchFilms,
-  fetchSearchFilmById,
-  fetchGenres,
-} from './fetch-films';
+import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 
 const options = {
   totalItems: 0,
