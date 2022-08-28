@@ -1,11 +1,13 @@
 import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
+import { addToWatched } from './local-storage';
 
 export default function renderModalCard(movie) {
   modalRenderBox.innerHTML = '';
   const {
     poster_path,
     title,
+    id,
     vote_average,
     vote_count,
     popularity,
@@ -18,7 +20,7 @@ export default function renderModalCard(movie) {
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
         </div>
         <div class="modal__card">
-            <h2 class="modal__title">${title}</h2>
+            <h2 class="modal__title" data-id=${id}>${title}</h2>
             <div class="modal__list-wrap">
                 <ul class="modal__list">
                     <li class="modal__item">Vote / Votes</li>
@@ -41,21 +43,15 @@ export default function renderModalCard(movie) {
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
-  // Какого-то хрена выдает Null на кнопки ниже. Гляньте все. Рефы проверяла.
-
-  modalWatchBtn.addEventListener('click', addToWatched);
-  modalQueueBtn.addEventListener('click', addToQueue);
-  // modalCloseBtn.addEventListener('click', closeModal);
-
-  //function closeModal(e) {
-  // backdrop.classList.add('is-hidden');
-  // }
+  modalWatchBtn.addEventListener('click', e => addToWatched(e, id));
+  //   modalQueueBtn.addEventListener('click', addToQueue);
 }
-modalCloseBtn.addEventListener('click', onCloseModal);
 backdrop.addEventListener('click', onBackdropClick);
+modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
+  backdrop.removeEventListener('click', onBackdropClick);
   backdrop.classList.add('is-hidden');
 }
 

@@ -1,25 +1,37 @@
-// import { modalWatchBtn, modalQueueBtn } from './refs';
-// import { renderTrandFilms } from './render-cards';
+import { modalWatchBtn, modalQueueBtn } from './refs';
+import { renderTrandFilms } from './render-cards';
 
-// const arrayWatchedFilms = [];
-// const arrayQueueFilms = [];
+const WATCHSTORAGE_KEY = 'watchStorage';
+const QUEUESTORAGE_KEY = 'queueStorage';
 
-// function addToWatched(data) {
-//   const watchedFilm = 'remove from watched';
+function addToWatched(e, id) {
+  let data = localStorage.getItem(WATCHSTORAGE_KEY);
+  data = data ? JSON.parse(data) : [];
+  const index = data.indexOf(id);
+  console.log(index);
+  console.log(data);
+  if (index < 0) {
+    const movieId = JSON.stringify(id);
+    localStorage.setItem(WATCHSTORAGE_KEY, movieId);
+    modalWatchBtn.textContent = 'watched';
+  } else {
+    data.splice(id);
+    modalWatchBtn.textContent = 'add to watched';
+  }
 
-//   if (modalWatchBtn.textContent === watchedFilm) {
-//     modalWatchBtn.textContent = 'add to watched';
-//     removeFilmFromWatched();
-//     updateWatchedFilms();
-//     return;
-//   }
+  //   const watchedFilm = 'remove from watched';
+  //   if (modalWatchBtn.textContent === watchedFilm) {
+  //     modalWatchBtn.textContent = 'add to watched';
+  //     removeFilmFromWatched();
+  //     updateWatchedFilms();
+  //     return;
+  //   }
+  //   modalWatchBtn.textContent = watchedFilm;
+  //   arrayWatchedFilms.push({ data });
+  //   localStorage.setItem('watched films', JSON.stringify(arrayWatchedFilms));
+  //   updateWatchedFilms();
+}
 
-//   modalWatchBtn.textContent = watchedFilm;
-//   arrayWatchedFilms.push({ data });
-//   localStorage.setItem('watched films', JSON.stringify(arrayWatchedFilms));
-
-//   updateWatchedFilms();
-// }
 // function removeFilmFromWatched(data) {
 //   const newIndex = arrayWatchedFilms.indexOf(data);
 //   const updatedWatchedFilms = arrayWatchedFilms.splice(newIndex, 1);
@@ -63,4 +75,4 @@
 //   });
 // }
 
-// export { addToWatched, addToQueue };
+export { addToWatched, addToQueue };

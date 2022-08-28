@@ -13,7 +13,9 @@ function renderTrandFilms(data) {
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
-    <span class="gallery__vote" data-id=${id}>${Math.round(vote_average*10)/10}</span>
+    <span class="gallery__vote" data-id=${id}>${
+          Math.round(vote_average * 10) / 10
+        }</span>
         <img
             class="gallery__img"
             src="https://www.themoviedb.org/t/p/w500${poster_path}"
@@ -31,7 +33,7 @@ function renderTrandFilms(data) {
       }
     )
     .join('');
-  gallery.insertAdjacentHTML("beforeend", markup);
+  gallery.insertAdjacentHTML('beforeend', markup);
 
   gallery.addEventListener('click', openModal);
 
@@ -77,7 +79,7 @@ function renderSearchFilms(data) {
       }
     )
     .join('');
-  gallery.insertAdjacentHTML("beforeend", markup);
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 export { renderTrandFilms, renderSearchFilms };
