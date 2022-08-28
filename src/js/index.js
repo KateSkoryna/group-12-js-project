@@ -3,20 +3,7 @@ import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
-import {
-  ref,
-  form,
-  gallery,
-  paginationEl,
-  galleryListEl,
-  modalCloseBtn,
-  modalWatchBtn,
-  modalQueueBtn,
-  footerTeamLink,
-  myLibWatchBtn,
-  myLibQueueBtn,
-  spiner,
-} from './refs';
+import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';

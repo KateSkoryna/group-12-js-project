@@ -1,16 +1,14 @@
-import { modal, backdrop, modalRenderBox } from './refs';
-import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
+import { modalRenderBox } from './refs';
+import { modalQueueBtn, modalWatchBtn } from './refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
-
-const WATCHSTORAGE_KEY = 'watchStorage';
-const QUEUESTORAGE_KEY = 'queueStorage';
+import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 
 export default function renderModalCard(movie) {
   modalRenderBox.innerHTML = '';
   const {
-    poster_path,
     title,
     id,
+    poster_path,
     vote_average,
     vote_count,
     popularity,
@@ -26,10 +24,9 @@ export default function renderModalCard(movie) {
   arr2 = arr2 ? JSON.parse(arr2) : [];
   const inStorage = arr.find(storageId => storageId === movieId);
   const inStorage2 = arr2.find(storageId => storageId === movieId);
-  console.log('inStorage', inStorage);
 
   const markup = `<div class="modal__poster-wrap">
-            <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
+            <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500/${poster_path}" alt="${title}">
         </div>
         <div class="modal__card">
             <h2 class="modal__title" data-id=${id}>${title}</h2>
@@ -55,37 +52,13 @@ export default function renderModalCard(movie) {
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
-  modalWatchBtn.textContent = inStorage ? 'remove' : 'add';
-  modalQueueBtn.textContent = inStorage2 ? 'remove' : 'add';
+  modalWatchBtn.textContent = inStorage ? 'watched' : 'add to watch';
+  modalQueueBtn.textContent = inStorage2 ? 'added' : 'add to queue';
 
   modalWatchBtn.dataset.id = id;
   modalQueueBtn.dataset.id = id;
   modalWatchBtn.addEventListener('click', checkWatchBtn);
   modalQueueBtn.addEventListener('click', checkQueueBtn);
-  // modalQueueBtn.addEventListener('click', e => addToQueue(e, id));
-  //   modalQueueBtn.addEventListener('click', addToQueue);
-}
-backdrop.addEventListener('click', onBackdropClick);
-modalCloseBtn.addEventListener('click', onCloseModal);
-
-function onCloseModal(event) {
-  window.removeEventListener('keydown', onEscPress);
-  modalWatchBtn.removeEventListener('click', checkWatchBtn);
-  backdrop.removeEventListener('click', onBackdropClick);
-  backdrop.classList.add('is-hidden');
 }
 
-function onBackdropClick(e) {
-  e.preventDefault();
-
-  if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
-    onCloseModal();
-  }
-}
-function onEscPress(event) {
-  if (event.code === 'Escape') {
-    onCloseModal();
-  }
-}
-
-export { renderModalCard, onEscPress };
+export { renderModalCard };
