@@ -51,6 +51,7 @@ modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
+  modalCloseBtn.addEventListener('click', onCloseModal);
   backdrop.removeEventListener('click', onBackdropClick);
   backdrop.classList.add('is-hidden');
 }

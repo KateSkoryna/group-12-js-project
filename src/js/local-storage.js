@@ -8,21 +8,27 @@ function addToWatched(e, id) {
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
   arr = arr ? JSON.parse(arr) : [];
   console.log(arr);
+  console.log(id);
   const movieId = String(id);
-  console.log(movieId);
-  const index = arr.includes(movieId);
+  const index = arr.indexOf(movieId);
   console.log(index);
-  console.log(movieId);
-  if (!index) {
+
+  if (index < 0) {
     arr.push(movieId);
     const movieEl = JSON.stringify(arr);
     localStorage.setItem(WATCHSTORAGE_KEY, movieEl);
     modalWatchBtn.textContent = 'watched';
+    return;
   } else {
-    arr.splice(movieId, 1);
+    arr.splice(index, 1);
+    console.log(arr);
     localStorage.removeItem(WATCHSTORAGE_KEY);
     localStorage.setItem(WATCHSTORAGE_KEY, arr);
     modalWatchBtn.textContent = 'add to watched';
+    if (arr.length === 0) {
+      localStorage.removeItem(WATCHSTORAGE_KEY);
+      return;
+    }
   }
 
   //   const watchedFilm = 'remove from watched';
