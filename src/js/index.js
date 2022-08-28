@@ -7,6 +7,7 @@ import {
   ref,
   form,
   gallery,
+  modal,
   paginationEl,
   galleryListEl,
   modalCloseBtn,
@@ -25,6 +26,7 @@ import {
   fetchSearchFilmById,
   fetchGenres,
 } from './fetch-films';
+import { addToWatched } from './local-storage';
 
 const options = {
   totalItems: 0,

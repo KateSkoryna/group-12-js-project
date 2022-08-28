@@ -1,6 +1,9 @@
 import { modal, backdrop, modalRenderBox } from './refs';
 import { modalCloseBtn, modalQueueBtn, modalWatchBtn } from './refs';
-import { addToWatched } from './local-storage';
+import { checkWatchBtn } from './local-storage';
+
+const WATCHSTORAGE_KEY = 'watchStorage';
+const QUEUESTORAGE_KEY = 'queueStorage';
 
 export default function renderModalCard(movie) {
   modalRenderBox.innerHTML = '';
@@ -15,6 +18,12 @@ export default function renderModalCard(movie) {
     genre_ids,
     overview,
   } = movie;
+
+  const movieId = String(id);
+  let arr = localStorage.getItem(WATCHSTORAGE_KEY);
+  arr = arr ? JSON.parse(arr) : [];
+  const inStorage = arr.find(storageId => storageId === movieId);
+  console.log('inStorage', inStorage);
 
   const markup = `<div class="modal__poster-wrap">
             <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}">
@@ -43,7 +52,11 @@ export default function renderModalCard(movie) {
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
-  modalWatchBtn.addEventListener('click', e => addToWatched(e, id));
+  modalWatchBtn.textContent = inStorage ? 'remove' : 'add';
+
+  modalWatchBtn.dataset.id = id;
+  modalWatchBtn.addEventListener('click', checkWatchBtn);
+  // modalQueueBtn.addEventListener('click', e => addToQueue(e, id));
   //   modalQueueBtn.addEventListener('click', addToQueue);
 }
 backdrop.addEventListener('click', onBackdropClick);
@@ -51,7 +64,7 @@ modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
-  modalCloseBtn.addEventListener('click', onCloseModal);
+  modalWatchBtn.removeEventListener('click', checkWatchBtn);
   backdrop.removeEventListener('click', onBackdropClick);
   backdrop.classList.add('is-hidden');
 }
