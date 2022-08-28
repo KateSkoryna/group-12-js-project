@@ -1,5 +1,4 @@
 import { modalWatchBtn, modalQueueBtn } from './refs';
-import { renderTrandFilms } from './render-cards';
 
 const WATCHSTORAGE_KEY = 'watchStorage';
 const QUEUESTORAGE_KEY = 'queueStorage';
@@ -51,8 +50,7 @@ function deleteWatch(id) {
 function addToQueue(id) {
   let arr = localStorage.getItem(QUEUESTORAGE_KEY);
   arr = arr ? JSON.parse(arr) : [];
-  console.log(arr);
-  console.log(id);
+
   const movieId = String(id);
   const index = arr.indexOf(movieId);
   console.log(index);

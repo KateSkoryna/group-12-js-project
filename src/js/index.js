@@ -26,7 +26,6 @@ import {
   fetchSearchFilmById,
   fetchGenres,
 } from './fetch-films';
-import { addToWatched } from './local-storage';
 
 const options = {
   totalItems: 0,
