@@ -61,8 +61,7 @@ background-attachment: fixed, fixed;;
             transform: scale(2);
         }
 }
-.modal__close-icon:focus {color: var(--accent-color);
-    transform: scale(2);}
+
 .modal__close-icon {
     @include size(18px, 18px);
     stroke: currentColor;
