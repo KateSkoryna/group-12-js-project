@@ -8,7 +8,7 @@ function onCloseModal(event) {
   window.removeEventListener('keydown', onEscPress);
   modalWatchBtn.removeEventListener('click', checkWatchBtn);
   modalQueueBtn.removeEventListener('click', checkQueueBtn);
-  backdrop.removeEventListener('click', onBackdropClick);
+ // backdrop.removeEventListener('click', onBackdropClick);
   backdrop.classList.add('is-hidden');
 }
 
