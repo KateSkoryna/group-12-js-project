@@ -1,7 +1,7 @@
 import axios from 'axios';
 const KEY = 'fd7341fdf0f2e94a335192ece09ea376';
 
-export let gnrArr = []
+export let gnrArr = [];
 
 // функция для пагинации
 
@@ -34,7 +34,7 @@ async function fetchSearchFilms(text, page) {
 // функция для поиска по id
 
 async function fetchSearchFilmById(id) {
-  const url = 'https://api.themoviedb.org/3/movie';
+  const url = 'https://api.themoviedb.org/3/movie/';
 
   try {
     const { data } = await axios.get(`${url}${id}?api_key=${KEY}`);
@@ -48,23 +48,21 @@ async function fetchGenres() {
   const url = 'https://api.themoviedb.org/3/genre/movie/list';
   const KEY = 'fd7341fdf0f2e94a335192ece09ea376';
 
-    try {
-      const { data } = await axios.get(`${url}?api_key=${KEY}`);
-      // console.log(data)
-        return data;
-
-    } catch (error) {
-      console.error('Something wrong!' + error);
-    }
+  try {
+    const { data } = await axios.get(`${url}?api_key=${KEY}`);
+    // console.log(data)
+    return data;
+  } catch (error) {
+    console.error('Something wrong!' + error);
+  }
 }
 fetchGenres().then(gener => {
-  const arr = gener.genres
-  const item = arr.map(i => i)
-  gnrArr.push(item)
-  return item
-})
+  const arr = gener.genres;
+  const item = arr.map(i => i);
+  gnrArr.push(item);
+  return item;
+});
 // fetchGenres()
-
 
 // функция без аргумента
 
@@ -81,7 +79,6 @@ fetchGenres().then(gener => {
 // }
 
 export { fetchTrendFilms, fetchSearchFilms, fetchSearchFilmById, fetchGenres };
-
 
 // const genreNamesSlice = []
 //         const genreNames = res.map(i => genreNamesSlice.push(i.name) )
