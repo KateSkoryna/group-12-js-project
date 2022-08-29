@@ -3,7 +3,6 @@ import { backdrop } from './refs';
 import { renderModalCard } from './renderModalCard';
 import { gnrArr } from './fetch-films';
 import { onEscPress } from './modal';
-
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
