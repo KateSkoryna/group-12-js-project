@@ -151,15 +151,19 @@
 }
 
 .logo__icon {
+    scale: 1;
+        transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+        .navigation__logo:hover &,
+        .navigation__logo:focus &
+         {
+            transform: rotate(360deg);
+            scale: 1.4;
+        }
     @media screen and (min-width: 768px) {
         margin-right: 10px;
     }
-         scale: 1;      
-        transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
-                .navigation__logo:hover & {
-                    transform:rotate(360deg);
-                    scale: 1.4;
-                }
+        
 }
 
 .logo__name {
@@ -194,6 +198,9 @@ padding-top: 10px;
     text-decoration: none;
 
     color: inherit;
+    &:focus {
+        color: inherit;
+    }
 }
 
 .side-nav__link--current-page {
@@ -213,4 +220,8 @@ padding-top: 10px;
     }
 }
 
+.navigation__logo:hover ,
+.navigation__logo:focus  {
+    color: inherit;
 
+}
