@@ -2,6 +2,7 @@ import { modalCloseBtn, modalWatchBtn, modalQueueBtn, backdrop } from './refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 
 function onCloseModal(event) {
+
   window.removeEventListener('keydown', onEscPress);
   modalWatchBtn.removeEventListener('click', checkWatchBtn);
   modalQueueBtn.removeEventListener('click', checkQueueBtn);

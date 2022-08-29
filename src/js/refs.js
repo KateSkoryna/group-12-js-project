@@ -12,6 +12,8 @@ const btnToTop = document.querySelector('.back-to-top');
 const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
 const modalRenderBox = document.querySelector('.modal__render-box');
+const jsLibrary = document.querySelector('.js-library');
+const storageChoice = document.querySelector('.js-choice-storage')
 const ref = {
   spinner: document.querySelector('#spinner'),
 };
@@ -33,4 +35,6 @@ export {
   backdrop,
   modal,
   modalRenderBox,
+  jsLibrary,
+  storageChoice,
 };
