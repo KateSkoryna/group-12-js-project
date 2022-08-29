@@ -37,6 +37,7 @@ function renderTrandFilms(data) {
             alt="${title}"
             loading="lazy"
             data-id=${id}
+            onerror="this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
             >
     </div>
     <div class="gallery__thumb" data-id=${id}>
@@ -95,6 +96,7 @@ function renderSearchFilms(data) {
             src="https://www.themoviedb.org/t/p/w500${poster_path}"
             alt="${title}"
             loading="lazy"
+            onerror="this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
             data-id=${id}
             >
     </div>

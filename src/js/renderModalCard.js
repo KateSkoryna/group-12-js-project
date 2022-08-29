@@ -26,7 +26,8 @@ export default function renderModalCard(movie) {
   const inStorage2 = arr2.find(storageId => storageId === movieId);
 
   const markup = `<div class="modal__poster-wrap">
-            <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500/${poster_path}" alt="${title}">
+            <img class="modal__poster" src="https://www.themoviedb.org/t/p/w500${poster_path}" alt="${title}"
+            onerror="this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';">
         </div>
         <div class="modal__card">
             <h2 class="modal__title" data-id=${id}>${title}</h2>
