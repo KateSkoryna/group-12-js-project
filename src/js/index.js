@@ -88,3 +88,4 @@ function search(event) {
     spinner.stop();
   });
 }
+import { openModal } from './teamModal';
