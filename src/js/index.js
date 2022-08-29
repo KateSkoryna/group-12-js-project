@@ -3,7 +3,7 @@ import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
-import { ref, form, gallery, paginationEl } from './refs';
+import { ref, form, gallery, paginationEl, libPage } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
@@ -24,7 +24,6 @@ const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
 
 const spinner = new Spinner(opts).spin(ref.spinner);
-
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
   paganation.reset(totalPages);
@@ -33,9 +32,10 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paganation.off('afterMove', search);
   spinner.stop();
 });
-
-form.addEventListener('submit', onClickRead);
 let value = null;
+form.addEventListener('submit', onClickRead);
+console.log(form);
+console.log(libPage);
 
 paganation.on('afterMove', popular);
 

@@ -15,6 +15,7 @@ const modalRenderBox = document.querySelector('.modal__render-box');
 const ref = {
   spinner: document.querySelector('#spinner'),
 };
+const libPage = document.querySelector('[data-page="library"]');
 
 export {
   ref,
@@ -33,4 +34,5 @@ export {
   backdrop,
   modal,
   modalRenderBox,
+  libPage,
 };
