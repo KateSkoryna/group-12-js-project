@@ -37,6 +37,7 @@
    background-color: var(--main-color);
    padding: 48px 20px 40px 20px;
 
+
 background-attachment: fixed, fixed;;
    }
   
@@ -60,7 +61,8 @@ background-attachment: fixed, fixed;;
             transform: scale(2);
         }
 }
-
+.modal__close-icon:focus {color: var(--accent-color);
+    transform: scale(2);}
 .modal__close-icon {
     @include size(18px, 18px);
     stroke: currentColor;
@@ -100,13 +102,13 @@ background-attachment: fixed, fixed;;
 .modal__title {
     text-transform: uppercase;
     font-family: var(--font-family-main);
-   @include font-style (500, 20px, 23.44px, 0.03em);
+   @include font-style (500, 20px, 23.44px, 0);
     margin-bottom: 20px;
 
 }
 .modal__item {
     font-family: var(--font-family-main);
-    @include font-style (500, 12px, 16px, 0.03em);
+    @include font-style (500, 12px, 16px, 0);
     color: var(--optional-color);
 }
 .modal__item:not(:last-child) {
@@ -115,7 +117,7 @@ background-attachment: fixed, fixed;;
 
 .modal__item-render{
     font-family: var(--font-family-main);
-    @include font-style (500, 12px, 16px, 0.03em);
+    @include font-style (500, 12px, 16px, 0);
     color: var(--extra-color);
 }  
 .modal__original-title {
@@ -123,7 +125,7 @@ background-attachment: fixed, fixed;;
 }
 
 .modal__item-render:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .modal__list-wrap {
@@ -133,6 +135,7 @@ background-attachment: fixed, fixed;;
 }
 
 .modal__list {
+    white-space: nowrap;
     margin-right: 40px;
 
     @media screen and (min-width:480px) and (max-width:767px) {
@@ -157,13 +160,13 @@ background-attachment: fixed, fixed;;
     padding: 3px;
 }
 .modal__about {
-    @include font-style (500, 12px, 14px, 0.03em);
+    @include font-style (500, 12px, 14px, 0);
     font-family: var(--font-family-main);
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 .modal__description {
-    @include font-style (500, 12px, 14px, 0.03em);
+    @include font-style (500, 12px, 14px, 0);
     font-family: var(--font-family-main);
     margin-bottom: 8px;
 }
@@ -174,7 +177,7 @@ background-attachment: fixed, fixed;;
 }
 .modal__btn {
     @include size (110px, 44px);
-    @include font-style (500, 12px, 16px, 0.03em);
+    @include font-style (500, 12px, 16px, 0);
     text-transform: uppercase;
     border: 1px solid var(--extra-color);
     border-radius: 5px;
