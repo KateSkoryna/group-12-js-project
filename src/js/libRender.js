@@ -33,6 +33,7 @@ function onClickWachedLib(e) {
 
   const arrMap = arr.map(i => {
     const number = parseInt(i);
+    myLibWatchBtn.removeEventListener('click', onClickWachedLib)
     return fetchSearchFilmById(number).then(renderWachLib);
   });
 
