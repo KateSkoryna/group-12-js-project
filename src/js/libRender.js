@@ -40,9 +40,6 @@ function onClickWachedLib(e) {
   function renderWachLib(data) {
     const { poster_path, title, id, genres, release_date, vote_average } = data;
     const gnr = genres.map(i => i.name)
-    const res = gnr.filter(i => {
-      return genres.includes(i.id);
-    });
     const genreNamesSlice = [];
     if (gnr.length >= 2) {
       genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
