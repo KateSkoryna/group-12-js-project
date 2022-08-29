@@ -1,5 +1,4 @@
 import { modalCloseBtn, modalWatchBtn, modalQueueBtn, backdrop } from './refs';
-
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 
 backdrop.addEventListener('click', onBackdropClick);

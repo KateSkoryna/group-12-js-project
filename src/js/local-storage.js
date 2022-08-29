@@ -37,7 +37,7 @@ function deleteWatch(id) {
   const movieEl = JSON.stringify(filterArr);
 
   localStorage.setItem(WATCHSTORAGE_KEY, movieEl);
-  modalWatchBtn.textContent = 'add to watch';
+  modalWatchBtn.textContent = 'add to watched';
   if (arr.length === 0) {
     localStorage.removeItem(WATCHSTORAGE_KEY);
     return;

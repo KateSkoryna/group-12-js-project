@@ -28,12 +28,14 @@
 .modal {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-items: center;
    position: absolute;
    top: 20px;
    left: 20px;
    right: 20px;
    background-color: var(--main-color);
-   padding: 40px 20px;
+   padding: 48px 20px 40px 20px;
 
 background-attachment: fixed, fixed;;
    }
@@ -65,26 +67,45 @@ background-attachment: fixed, fixed;;
 }
 
 .modal__poster-wrap {
-    padding-top: 8px;
-    padding-bottom: 20px;
+    @media screen and (max-width:767px) {
+        margin-bottom: 20px;
+    }
 }
+
+.modal__box {
+    @media screen and (max-width:767px) {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+   @media screen and (min-width:768px) and (max-width:1279px) {
+   margin-left: auto;
+   }
+   @media screen and (min-width:1280px) {
+    position: absolute;
+    right:60px;
+    bottom: 40px;
+    
+   }
+}
+
 .modal__poster {
     width: 100%;
     border-radius: 5px;
     
 }
 .modal__title {
+    text-transform: uppercase;
     font-family: var(--font-family-main);
-   // @include font-style (500, 20px, 23.44px, 0.08em);
-     font-weight: 500;
-     font-size: 20px;
-     line-height: 1.15;
+   @include font-style (500, 20px, 23.44px, 0.08em);
     margin-bottom: 20px;
 
 }
 .modal__item {
     font-family: var(--font-family-main);
-    //@include font-style (500, 12px, 16px);
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
@@ -95,11 +116,9 @@ background-attachment: fixed, fixed;;
 }
 
 .modal__item-render{
+    text-transform: uppercase;
     font-family: var(--font-family-main);
-    //@include font-style (500, 12px, 14px, 0.08em);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
+    @include font-style (500, 12px, 14px, 0.08em);
     color: var(--extra-color);
 }  
 
@@ -109,9 +128,16 @@ background-attachment: fixed, fixed;;
 
 .modal__list-wrap {
     display: flex;
-    justify-content: space-between;
-    padding-right: 45px;
+    justify-content: flex-start;
     margin-bottom: 20px;
+}
+
+.modal__list {
+    margin-right: 40px;
+
+    @media screen and (min-width:480px) and (max-width:767px) {
+        margin-right: 100px;
+    }
 }
 
 .modal__item-vote {
@@ -131,20 +157,14 @@ background-attachment: fixed, fixed;;
     padding: 3px;
 }
 .modal__about {
-    //@include font-style (500, 12px, 14px, 0.08em);
+    @include font-style (500, 12px, 14px, 0.08em);
     font-family: var(--font-family-main);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 .modal__description {
-    //@include font-style (500, 12px, 14px, 0.08em);
+    @include font-style (500, 12px, 14px, 0.08em);
     font-family: var(--font-family-main);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.66;
     margin-bottom: 8px;
 }
 
@@ -154,22 +174,21 @@ background-attachment: fixed, fixed;;
 }
 .modal__btn {
     @include size (110px, 44px);
-    //@include font-style (500, 12px, 16px, 0.08em);
-    font-family: var(--font-family-main);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
+    @include font-style (500, 12px, 16px, 0.03em);
     text-transform: uppercase;
-    border-width: 1px;
-    border-color: var(--extra-color);
+    border: 1px solid var(--extra-color);
     border-radius: 5px;
     background-color: var(--main-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: scale 250ms linear;
     &:hover,
     &:focus {
         background-color: var(--main-color);
         background-color: var(--second-accent-color);
         border: 1px solid var(--second-accent-color);
         color: var(--main-color);
+        scale: 1.1;
+        
     }
   
 }
@@ -177,17 +196,30 @@ background-attachment: fixed, fixed;;
     margin-right: 20px;
 }
 
+.modal__card {
+    @media screen and (max-width:1279px) {
+        margin-bottom: 20px;
+    }
+}
+
 //768px +
 @media screen and (min-width: 768px) {
     .modal {
         width: 704px;
+        height: 552px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
+        padding-right: 72px;
+        padding-left: 36px;
     }
     .modal__render-box {
         display: flex;
+
+        @media screen and (max-width:1279px) {
+            margin-bottom: 20px;
+        }
     }
     .modal__poster-wrap {
         margin-right: 68px;
@@ -199,11 +231,8 @@ background-attachment: fixed, fixed;;
     .modal__card {
         width: 264px;
     }
-    .modal__list-wrap {
-        padding-right: 72px;
-    }
     .modal__watch-btn {
-        margin-right: 0px;
+        margin-right: 15px;
     }
     .modal__btn {
         @include size (125px, 44px);
@@ -219,6 +248,7 @@ background-attachment: fixed, fixed;;
 //1280px +
 @media screen and (min-width: 1280px) {
     .modal {
+        position: relative;
         @include size (806px, 558px);
         padding: 40px 12px;
     }
@@ -245,7 +275,7 @@ background-attachment: fixed, fixed;;
         @include size (136px, 44px);
     }
     .modal__watch-btn{
-        margin-right: 8px;
+        margin-right: 15px;
     }
     .modal__queueBtn {
         margin-right: 15px;

@@ -52,7 +52,7 @@ export default function renderModalCard(movie) {
         </div>`;
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
-  modalWatchBtn.textContent = inStorage ? 'watched' : 'add to watch';
+  modalWatchBtn.textContent = inStorage ? 'watched' : 'add to watched';
   modalQueueBtn.textContent = inStorage2 ? 'added' : 'add to queue';
 
   modalWatchBtn.dataset.id = id;
