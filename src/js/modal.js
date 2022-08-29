@@ -5,6 +5,7 @@ backdrop.addEventListener('click', onBackdropClick);
 modalCloseBtn.addEventListener('click', onCloseModal);
 
 function onCloseModal(event) {
+
   window.removeEventListener('keydown', onEscPress);
   modalWatchBtn.removeEventListener('click', checkWatchBtn);
   modalQueueBtn.removeEventListener('click', checkQueueBtn);

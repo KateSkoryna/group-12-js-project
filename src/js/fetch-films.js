@@ -34,7 +34,7 @@ async function fetchSearchFilms(text, page) {
 // функция для поиска по id
 
 async function fetchSearchFilmById(id) {
-  const url = 'https://api.themoviedb.org/3/movie';
+  const url = 'https://api.themoviedb.org/3/movie/';
 
   try {
     const { data } = await axios.get(`${url}${id}?api_key=${KEY}`);
