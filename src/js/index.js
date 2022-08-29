@@ -93,3 +93,4 @@ function search(event) {
     renderSearchFilms(images);
   });
 }
+import { openModal } from './teamModal';
