@@ -3,30 +3,10 @@ import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
-import {
-  ref,
-  form,
-  gallery,
-  modal,
-  paginationEl,
-  galleryListEl,
-  modalCloseBtn,
-  modalWatchBtn,
-  modalQueueBtn,
-  footerTeamLink,
-  myLibWatchBtn,
-  myLibQueueBtn,
-  spiner,
-} from './refs';
+import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
-import {
-  fetchTrendFilms,
-  fetchSearchFilms,
-  fetchSearchFilmById,
-  fetchGenres,
-} from './fetch-films';
-import { addToWatched } from './local-storage';
+import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 
 const options = {
   totalItems: 0,

@@ -1,5 +1,3 @@
-export {opts}
-
 const opts = {
   lines: 13, // The number of lines to draw
   length: 20, // The length of each line
@@ -20,3 +18,5 @@ const opts = {
   className: 'spinner', // The CSS class to assign to the spinner
   position: 'absolute', // Element positioning
 };
+
+export { opts };
