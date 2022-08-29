@@ -6,6 +6,41 @@
     }
 }
 
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+    background-color: #FF001B !important;
+    border-color: #FF001B !important;
+}
+
  .pagination .tui-pagination {
     margin: 0;
 }
+
+
+
+@media screen and (min-width: 768px) and (max-width:1400px) {
+    .tui-page-btn {
+            height: 40px !important;
+            width: 40px !important;
+    
+        }
+}
+
+ @media screen and (min-width: 280px) and (max-width: 310px) {
+.tui-pagination {
+    display: flex;
+    flex-direction: row;
+}
+
+.pagination-container{
+    padding: 0;
+}
+     .tui-prev {
+         margin-right: 0 !important;
+     }
+
+     .tui-next {
+         margin-left: 0 !important;
+     }
+
+ }

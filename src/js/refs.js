@@ -11,8 +11,15 @@ const myLibQueueBtn = document.querySelector('.header__queue-btn');
 const btnToTop = document.querySelector('.back-to-top');
 const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
+const modalRenderBox = document.querySelector('.modal__render-box');
+const jsLibrary = document.querySelector('.js-library');
+const storageChoice = document.querySelector('.js-choice-storage')
+const ref = {
+  spinner: document.querySelector('#spinner'),
+};
 
 export {
+  ref,
   form,
   gallery,
   paginationEl,
@@ -21,9 +28,13 @@ export {
   modalWatchBtn,
   modalQueueBtn,
   footerTeamLink,
+  spinner,
   myLibWatchBtn,
   myLibQueueBtn,
   btnToTop,
   backdrop,
   modal,
+  modalRenderBox,
+  jsLibrary,
+  storageChoice,
 };
