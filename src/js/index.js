@@ -46,6 +46,7 @@ function onClickRead(event) {
 
   if (!value) {
     Notify.failure('enter text!');
+    spinner.stop();
     return;
   }
 
