@@ -1,7 +1,13 @@
-import { modalRenderBox } from './refs';
-import { modalQueueBtn, modalWatchBtn } from './refs';
+import {
+  modalRenderBox,
+  backdrop,
+  modalQueueBtn,
+  modalWatchBtn,
+  modalCloseBtn,
+} from './refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
+import { onBackdropClick, onCloseModal } from './modal';
 
 export default function renderModalCard(movie) {
   modalRenderBox.innerHTML = '';
@@ -60,6 +66,9 @@ export default function renderModalCard(movie) {
   modalQueueBtn.dataset.id = id;
   modalWatchBtn.addEventListener('click', checkWatchBtn);
   modalQueueBtn.addEventListener('click', checkQueueBtn);
+
+  backdrop.addEventListener('click', onBackdropClick);
+  modalCloseBtn.addEventListener('click', onCloseModal);
 }
 
 export { renderModalCard };
