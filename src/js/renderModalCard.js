@@ -1,9 +1,18 @@
-import { modalRenderBox } from './refs';
-import { modalQueueBtn, modalWatchBtn } from './refs';
+import {
+  modalRenderBox,
+  backdrop,
+  modalQueueBtn,
+  modalWatchBtn,
+  modalCloseBtn,
+} from './refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
+import { gnrArr } from './fetch-films';
+import { onBackdropClick, onCloseModal } from './modal';
 
 export default function renderModalCard(movie) {
+  const gnrArrCycle = gnrArr.flatMap(i => i);
+  const idArr = gnrArrCycle.map(i => i);
   modalRenderBox.innerHTML = '';
   const {
     title,
@@ -16,6 +25,12 @@ export default function renderModalCard(movie) {
     genre_ids,
     overview,
   } = movie;
+  const res = idArr.filter((i) => {
+          return genre_ids.includes(i.id);
+        });
+  const genreNames = res.map(i => i.name);
+  const genreNamesArr = [];
+  genreNamesArr.push(genreNames);
 
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
@@ -44,8 +59,8 @@ export default function renderModalCard(movie) {
                     }</span> <span class="modal__item-slash">/</span>
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
-                    <li class="modal__item-render">${original_title}</li>
-                    <li class="modal__item-render">${genre_ids}</li>
+                    <li class="modal__item-render modal__original-title">${original_title}</li>
+                    <li class="modal__item-render">${genreNamesArr}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>
@@ -60,6 +75,9 @@ export default function renderModalCard(movie) {
   modalQueueBtn.dataset.id = id;
   modalWatchBtn.addEventListener('click', checkWatchBtn);
   modalQueueBtn.addEventListener('click', checkQueueBtn);
+
+  backdrop.addEventListener('click', onBackdropClick);
+  modalCloseBtn.addEventListener('click', onCloseModal);
 }
 
 export { renderModalCard };
