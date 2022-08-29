@@ -24,9 +24,7 @@ import {
   myLibQueueBtn,
   spiner,
 } from './refs';
-
-// const WACHLIB_KEY = "wachlib"
-
+console.log(gnrArr)
 myLibWatchBtn.addEventListener('click', onClickWachedLib);
 
 function onClickWachedLib(e) {
@@ -35,28 +33,22 @@ function onClickWachedLib(e) {
 
   const arrMap = arr.map(i => {
     const number = parseInt(i);
+    myLibWatchBtn.removeEventListener('click', onClickWachedLib)
     return fetchSearchFilmById(number).then(renderWachLib);
   });
 
-  console.log(arrMap);
 
   function renderWachLib(data) {
     const { poster_path, title, id, genres, release_date, vote_average } = data;
-    // const gnrArrCycle = gnrArr.flatMap(i => i);
-    // const idArr = gnrArrCycle.map(i => i);
-
-    // console.log(data.id)
-    // const res = idArr.filter(i => {
-    //   return genre_ids.includes(i.id);
-    // });
-    // const genreNames = res.map(i => i.name);
-    // const genreNamesSlice = [];
-    // if (genreNames.length >= 2) {
-    //   genreNamesSlice.push(`${genreNames.slice(0, 2) + ','}`);
-    // }
-    // if (genreNames.length === 1) {
-    //   genreNamesSlice.push(`${genreNames.slice(0, 1) + ','}`);
-    // }
+    const gnr = genres.map(i => i.name)
+    const genreNamesSlice = [];
+    if (gnr.length >= 2) {
+      genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
+    }
+    if (gnr.length === 1) {
+      genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
+    }
+    
     const year = parseInt(release_date);
     const markup = `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -73,7 +65,7 @@ function onClickWachedLib(e) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genres} Other</p>
+        <p class="gallery__genres" data-id=${id}>${genreNamesSlice} Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
