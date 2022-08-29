@@ -13,7 +13,10 @@ const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
 const modalRenderBox = document.querySelector('.modal__render-box');
 const jsLibrary = document.querySelector('.js-library');
-const storageChoice = document.querySelector('.js-choice-storage')
+const storageChoice = document.querySelector('.js-choice-storage');
+const watchedChoice = document.querySelector('#js-WatchedButton');
+const queueChoice = document.querySelector('#js-QueueButton');
+const emptyGallery = document.querySelector('.unfilled-list');
 const ref = {
   spinner: document.querySelector('#spinner'),
 };
@@ -37,4 +40,7 @@ export {
   modalRenderBox,
   jsLibrary,
   storageChoice,
+  watchedChoice,
+  queueChoice,
+  emptyGallery,
 };
