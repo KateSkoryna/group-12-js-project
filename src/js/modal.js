@@ -10,7 +10,6 @@ function onCloseModal(event) {
 }
 
 function onBackdropClick(e) {
-  e.preventDefault();
   if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
     onCloseModal();
   }

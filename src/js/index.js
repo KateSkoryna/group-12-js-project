@@ -1,11 +1,11 @@
-import { Spinner } from 'spin.js';
-import { opts } from './opts-spinner';
+import { spinner } from './spinner';
+
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
-import { ref, form, gallery, paginationEl, footerTeamLink } from './data/refs';
+import { form, gallery, paginationEl, footerTeamLink } from './data/refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
@@ -14,7 +14,7 @@ import './themeChange';
 import './local-storage-themeSwitch';
 import { openModal } from './teamModal';
 
-Notify.init({position: 'center-center'});
+Notify.init({ position: 'center-center' });
 
 const options = {
   totalItems: 0,
@@ -30,8 +30,6 @@ const paganation = new Pagination(
 
 const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
-
-const spinner = new Spinner(opts).spin(ref.spinner);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
@@ -51,7 +49,6 @@ paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();
-  const spinner = new Spinner(opts).spin(ref.spinner); ////create spinner
   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
@@ -80,7 +77,6 @@ function onClickRead(event) {
 }
 
 function popular(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchTrendFilms(currentPage).then(({ results: images }) => {
@@ -90,7 +86,6 @@ function popular(event) {
 }
 
 function search(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchSearchFilms(value, currentPage).then(({ results: images }) => {
