@@ -7,14 +7,13 @@ import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
 import { form, gallery, paginationEl, footerTeamLink } from './data/refs';
 import { Notify } from 'notiflix';
+Notify.init({ position: 'center-top', distance: '140px', clickToClose: true });
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 import './themeChange';
 import './local-storage-themeSwitch';
 import { openModal } from './teamModal';
-
-Notify.init({ position: 'center-center' });
 
 const options = {
   totalItems: 0,
@@ -52,7 +51,7 @@ function onClickRead(event) {
   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
-    Notify.failure('Enter text!');
+    Notify.failure('I cant read your mind. Enter movie title, please!');
     spinner.stop();
     return;
   }
@@ -63,7 +62,7 @@ function onClickRead(event) {
       spinner.stop(); ////stoping spinner
       if (images.length === 0) {
         paginationEl.classList.add('visually-hidden');
-        Notify.failure(`Images by not found!`);
+        Notify.failure(`Sorry...Movie was not found...`);
         return;
       }
 
