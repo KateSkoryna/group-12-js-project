@@ -88,6 +88,8 @@ function renderSearchFilms(data) {
   gallery.addEventListener('click', e => openModal(e, data));
 
   function openModal(e, data) {
+    if (e.target.nodeName !== 'IMG') 
+      return
     const value = e.target.dataset.id;
     if (!value) {
       return;
@@ -127,6 +129,8 @@ function renderWachLib(data) {
   gallery.addEventListener('click', e => openModal(e, data));
 
   function openModal(e) {
+    if (e.target.nodeName !== 'IMG') 
+      return
     console.log(e.target);
     const list = e.currentTarget;
     console.log(e.currentTarget);
