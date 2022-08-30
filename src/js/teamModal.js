@@ -1,5 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-import { footerTeamLink, gallery, modalCloseBtn } from './data/refs';
+import { gallery, modalCloseBtn } from './data/refs';
 import { onCloseModal } from './modal';
 import sprite from '../images/sprite.svg';
 import katya from '../images/team/Katya.jpg';

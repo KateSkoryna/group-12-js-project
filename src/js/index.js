@@ -1,7 +1,8 @@
 import { spinner } from './spinner';
+import { paganation } from './pagination';
 
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
+// import Pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.min.css';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
@@ -15,17 +16,17 @@ import './themeChange';
 import './local-storage-themeSwitch';
 import { openModal } from './teamModal';
 
-const options = {
-  totalItems: 0,
-  itemsPerPage: 20,
-  visiblePages: 5,
-  centerAlign: true,
-  page: 1,
-};
-const paganation = new Pagination(
-  document.getElementById('pagination'),
-  options
-);
+// const options = {
+//   totalItems: 0,
+//   itemsPerPage: 20,
+//   visiblePages: 5,
+//   centerAlign: true,
+//   page: 1,
+// };
+// const paganation = new Pagination(
+//   document.getElementById('pagination'),
+//   options
+// );
 
 const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
