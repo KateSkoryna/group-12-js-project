@@ -4,20 +4,32 @@ body.light-theme {
 }
 
 body.dark-theme {
-    background-color: #333333;
-    color: #fff;
+    background-color:rgb(35, 32, 30);
+    // background-color: #333333;
+    // color: #fff;
 
     & .tui-page-btn {
-            background-color: #333333;
+        background-color: rgb(35, 32, 30);
+            // background-color: #333333;
             color: lightgrey;
         }
     & .tui-next-is-ellip {
-            background-color: #333333;
+        background-color: rgb(35, 32, 30);
+            // background-color: #333333;
             color: lightgrey;
         }
     & .gallery__name {
             color: #cccccc
         }
+
+    .backdrop {
+        background-color: rgba(0, 0, 0, 0.409);
+        }
+    
+    .modal {
+        background-color: #333333;
+        }
+        
 }
 
 .toolbar {
@@ -98,6 +110,8 @@ body.dark-theme {
 }
 
 .dark-theme {
-    color: lightgrey;
-    background-color: #222;
+    background: rgb(19, 16, 15);
+        color: rgb(223, 215, 211);
+    // color: lightgrey;
+    // background-color: #222;
 }
