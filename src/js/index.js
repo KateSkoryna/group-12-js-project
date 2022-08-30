@@ -8,6 +8,8 @@ import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 
+import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
+
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
