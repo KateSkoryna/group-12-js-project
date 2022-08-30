@@ -3,7 +3,6 @@ import { genres } from './data/genres';
 const getGenres = ids => {
   const arr = [];
   ids.forEach(id => {
-    console.log(genres[id]);
     if (genres[id]) {
       arr.push(genres[id]);
     }
@@ -15,4 +14,17 @@ const getGenres = ids => {
   }
 };
 
-export { getGenres };
+function getG(arr) {
+  const array = [];
+  arr.forEach(el => {
+    array.push(el.name);
+  });
+
+  if (array.length <= 2) {
+    return array;
+  } else {
+    return array.slice(0, 2) + ', Other';
+  }
+}
+
+export { getGenres, getG };

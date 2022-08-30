@@ -1,5 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-import { footerTeamLink, gallery } from './refs';
+import { footerTeamLink, gallery } from './data/refs';
 import sprite from '../images/sprite.svg';
 import katya from '../images/team/Katya.jpg';
 import ira from '../images/team/Ira.jpg';
