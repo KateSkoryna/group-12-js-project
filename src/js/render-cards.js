@@ -1,8 +1,9 @@
-import { gallery, jsLibrary } from './refs';
-import { backdrop } from './refs';
-import { renderModalCard, renderModalLibraryCard } from './renderModalCard';
+import { gallery, backdrop } from './data/refs';
+import { renderModalCard } from './renderModalCard';
 import { gnrArr } from './fetch-films';
 import { onEscPress } from './modal';
+
+import { getGenres } from './getGenres';
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
@@ -13,6 +14,7 @@ function renderTrandFilms(data) {
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
+        const getNames = getGenres(genre_ids);
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -30,7 +32,7 @@ function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genre_ids} Other</p>
+        <p class="gallery__genres" data-id=${id}>${getNames}</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
@@ -77,7 +79,7 @@ function renderSearchFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genre_ids} Other</p>
+        <p class="gallery__genres" data-id=${id}>${genre_ids} </p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
@@ -117,7 +119,7 @@ function renderWachLib(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genres} Other</p>
+        <p class="gallery__genres" data-id=${id}>${genres} </p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;

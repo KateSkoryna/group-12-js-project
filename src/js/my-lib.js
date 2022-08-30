@@ -1,5 +1,5 @@
 import { fetchSearchFilmById } from './fetch-films';
-import { gallery, watchedChoice, queueChoice, emptyGallery } from './refs';
+import { gallery, watchedChoice, queueChoice, emptyGallery } from './data/refs';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 import { renderWachLib } from './render-cards';
 

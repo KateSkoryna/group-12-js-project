@@ -1,4 +1,4 @@
-import { btnToTop } from './refs';
+import { btnToTop } from './data/refs';
 
 const trackScroll = () => {
   const scrolled = window.pageYOffset;

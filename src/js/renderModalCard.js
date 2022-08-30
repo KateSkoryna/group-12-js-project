@@ -4,15 +4,13 @@ import {
   modalQueueBtn,
   modalWatchBtn,
   modalCloseBtn,
-} from './refs';
+} from './data/refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 // import { gnrArr } from './fetch-films';
 import { onBackdropClick, onCloseModal } from './modal';
 
 function renderModalCard(movie) {
-  // const gnrArrCycle = gnrArr.flatMap(i => i);
-  // const idArr = gnrArrCycle.map(i => i);
   modalRenderBox.innerHTML = '';
   const {
     title,
@@ -25,19 +23,6 @@ function renderModalCard(movie) {
     genre_ids,
     overview,
   } = movie;
-
-  // const res = idArr.filter((i) => {
-  //    return genre_ids.includes(i.id)
-
-  //   });
-  // const genreNames = res.map(i => i.name);
-  // const genreNamesSlice = [];
-  // if (genreNames.length >= 2) {
-  //   genreNamesSlice.push(`${genreNames.slice(0, 2)}`);
-  // }
-  // if (genreNames.length === 1) {
-  //   genreNamesSlice.push(`${genreNames.slice(0, 1)}`);
-  // }
 
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);

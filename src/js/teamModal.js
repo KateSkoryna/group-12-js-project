@@ -1,14 +1,14 @@
 import * as basicLightbox from 'basiclightbox';
 import { footerTeamLink, gallery } from './refs';
-import sprite from "../images/sprite.svg";
-import katya from "../images/team/Katya.jpg";
-import ira from "../images/team/Ira.jpg";
-import aleksiy from "../images/team/Aleksiy.jpg";
-import andriy from "../images/team/Andriy.jpg";
-import lena from "../images/team/Lena.jpg";
-import leonid from "../images/team/Leonid.jpg";
-import yulia from "../images/team/Yulia.jpg";
-import ulyana from "../images/team/Ulyana.jpg";
+import sprite from '../images/sprite.svg';
+import katya from '../images/team/Katya.jpg';
+import ira from '../images/team/Ira.jpg';
+import aleksiy from '../images/team/Aleksiy.jpg';
+import andriy from '../images/team/Andriy.jpg';
+import lena from '../images/team/Lena.jpg';
+import leonid from '../images/team/Leonid.jpg';
+import yulia from '../images/team/Yulia.jpg';
+import ulyana from '../images/team/Ulyana.jpg';
 
 const teamModal = `
 <div class="team__modal">
@@ -209,27 +209,21 @@ const teamModal = `
   </ul>
 </div>`;
 
-
-
-
 footerTeamLink.addEventListener('click', openModal);
 const modal = basicLightbox.create(teamModal);
 
 function openModal(evt) {
-  
   modal.show();
-  gallery.style.position="fixed";
+  gallery.style.position = 'fixed';
   window.addEventListener('keydown', closeModalHandler);
 
   function closeModalHandler(evt) {
     if (evt.code === 'Escape') {
       modal.close();
-      gallery.style.position="static";
+      gallery.style.position = 'static';
       window.removeEventListener('keydown', closeModalHandler);
     }
   }
 }
 
-
 export { openModal };
-

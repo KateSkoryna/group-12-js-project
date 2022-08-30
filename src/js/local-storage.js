@@ -1,4 +1,4 @@
-import { modalWatchBtn, modalQueueBtn } from './refs';
+import { modalWatchBtn, modalQueueBtn } from './data/refs';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 
 function checkWatchBtn(e) {

@@ -5,7 +5,7 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
-import { ref, form, gallery, paginationEl } from './refs';
+import { ref, form, gallery, paginationEl } from './data/refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
