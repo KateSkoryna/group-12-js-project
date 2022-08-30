@@ -6,7 +6,6 @@ import { getGenres, getG } from './getGenres';
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
-  console.log(data);
   gallery.innerHTML = '';
   const markup = data
     .map(
