@@ -130,7 +130,6 @@ function renderWachLib(data) {
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
     const value = parseInt(e.target.dataset.id);
-    console.log(value);
     if (value === data.id && e.target) {
       renderModalCard(data);
     }

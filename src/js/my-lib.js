@@ -3,7 +3,6 @@ import { gallery, watchedChoice, queueChoice, emptyGallery } from './refs';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 import { renderWachLib } from './render-cards';
 
-debugger;
 let watched = JSON.parse(localStorage.getItem(WATCHSTORAGE_KEY)) || [];
 let queue = JSON.parse(localStorage.getItem(QUEUESTORAGE_KEY)) || [];
 
@@ -55,4 +54,3 @@ function renderFilmGallery(varietyList) {
     console.log(error);
   }
 }
-debugger;

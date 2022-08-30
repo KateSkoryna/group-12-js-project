@@ -2,6 +2,7 @@ import { Spinner } from 'spin.js';
 import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
+import { openModal } from './teamModal';
 
 import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
@@ -90,4 +91,3 @@ function search(event) {
     spinner.stop();
   });
 }
-import { openModal } from './teamModal';
