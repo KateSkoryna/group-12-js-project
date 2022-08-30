@@ -23,10 +23,12 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "spin.js": "^4.1.1",
-    "tui-pagination": "^3.4.1"
+    "tui-pagination": "^3.4.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "@types/uuid": "^8.3.4",
     "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",

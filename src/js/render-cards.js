@@ -13,17 +13,6 @@ function renderTrandFilms(data) {
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
-        const res = idArr.filter(i => {
-          return genre_ids.includes(i.id);
-        });
-        const genreNames = res.map(i => i.name);
-        const genreNamesSlice = [];
-        if (genreNames.length >= 2) {
-          genreNamesSlice.push(`${genreNames.slice(0, 2) + ','}`);
-        }
-        if (genreNames.length === 1) {
-          genreNamesSlice.push(`${genreNames.slice(0, 1) + ','}`);
-        }
         const year = parseInt(release_date);
         return `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
@@ -41,7 +30,7 @@ function renderTrandFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genreNamesSlice} Other</p>
+        <p class="gallery__genres" data-id=${id}>${genre_ids} Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
@@ -67,23 +56,10 @@ function renderTrandFilms(data) {
 }
 
 function renderSearchFilms(data) {
-  const gnrArrCycle = gnrArr.flatMap(i => i);
-  const idArr = gnrArrCycle.map(i => i);
   gallery.innerHTML = '';
   const markup = data
     .map(
       ({ poster_path, title, id, genre_ids, release_date, vote_average }) => {
-        const res = idArr.filter(i => {
-          return genre_ids.includes(i.id);
-        });
-        const genreNames = res.map(i => i.name);
-        const genreNamesSlice = [];
-        if (genreNames.length >= 2) {
-          genreNamesSlice.push(`${genreNames.slice(0, 2) + ','}`);
-        }
-        if (genreNames.length === 1) {
-          genreNamesSlice.push(`${genreNames.slice(0, 1) + ','}`);
-        }
         const year = parseInt(release_date);
         const rating = vote_average.toFixed(1);
 
@@ -101,7 +77,7 @@ function renderSearchFilms(data) {
     </div>
     <div class="gallery__thumb" data-id=${id}>
         <h3 class="gallery__name" data-id=${id}>${title}</h3>
-        <p class="gallery__genres" data-id=${id}>${genreNamesSlice} Other</p>
+        <p class="gallery__genres" data-id=${id}>${genre_ids} Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
@@ -109,43 +85,28 @@ function renderSearchFilms(data) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+  gallery.addEventListener('click', e => openModal(e, data));
 
-  gallery.addEventListener('click', openModal);
-
-  function openModal(e) {
-    backdrop.classList.remove('is-hidden');
-    window.addEventListener('keydown', onEscPress);
-    console.log(data)
-    const value = parseInt(e.target.dataset.id);
+  function openModal(e, data) {
+    const value = e.target.dataset.id;
     if (!value) {
       return;
     }
-    const arr = [...data].filter(movie => movie.id === value);
-    const movie = arr[0];
-    renderModalCard(movie);
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+    console.log(data);
+    renderModalCard(data);
   }
 }
 
-function renderLibrary(data) {
+function renderWachLib(data) {
   const { poster_path, title, id, genres, release_date, vote_average } = data;
-  const gnr = genres.map(i => i.name)
-  const res = gnr.filter(i => {
-    return genres.includes(i.id);
-  });
-    
-  const genreNamesSlice = [];
-  if (gnr.length >= 2) {
-    genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
-  }
-  if (gnr.length === 1) {
-    genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
-  }
-
   const year = parseInt(release_date);
   const markup = `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
-    <span class="gallery__vote" data-id=${id}>${Math.round(vote_average * 10) / 10
-    }</span>
+    <span class="gallery__vote" data-id=${id}>${
+    Math.round(vote_average * 10) / 10
+  }</span>
         <img
             class="gallery__img"
             src="https://www.themoviedb.org/t/p/w500${poster_path}"
@@ -155,25 +116,24 @@ function renderLibrary(data) {
             >
     </div>
     <div class="gallery__thumb" data-id=${id}>
-        <h3 class="gallery__name" data-id=${id}>${title}</h3><p class="gallery__genres" data-id=${id}>${genreNamesSlice} Other</p>
+        <h3 class="gallery__name" data-id=${id}>${title}</h3>
+        <p class="gallery__genres" data-id=${id}>${genres} Other</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
 </li>`;
 
-  jsLibrary.insertAdjacentHTML('beforeend', markup);
-  jsLibrary.addEventListener('click', e => openModal(e, data));
+  gallery.insertAdjacentHTML('beforeend', markup);
 
-  function openModal(e, data) {
+  gallery.addEventListener('click', e => openModal(e, data));
+
+  function openModal(e) {
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
     const value = parseInt(e.target.dataset.id);
-    if (!value || data.id !== value) {
-      return;
+    if (value === data.id && e.target) {
+      renderModalCard(data);
     }
-    renderModalLibraryCard(data)
   }
-};
+}
 
-export { renderTrandFilms, renderSearchFilms, renderLibrary };
-
-
+export { renderTrandFilms, renderSearchFilms, renderWachLib };

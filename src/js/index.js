@@ -3,11 +3,12 @@ import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
+import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
+
 import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
-
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 import './themeChange';
 import './local-storage-themeSwitch';
@@ -92,4 +93,3 @@ function search(event) {
     spinner.stop();
   });
 }
-import { openModal } from './teamModal';
