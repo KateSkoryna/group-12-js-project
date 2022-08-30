@@ -25,13 +25,18 @@ export default function renderModalCard(movie) {
     genre_ids,
     overview,
   } = movie;
-
   const res = idArr.filter((i) => {
-          return genre_ids.includes(i.id);
-        });
+     return genre_ids.includes(i.id)
+    
+    });
   const genreNames = res.map(i => i.name);
-  const genreNamesArr = [];
-  genreNamesArr.push(genreNames);
+  const genreNamesSlice = [];
+  if (genreNames.length >= 2) {
+    genreNamesSlice.push(`${genreNames.slice(0, 2)}`);
+  }
+  if (genreNames.length === 1) {
+    genreNamesSlice.push(`${genreNames.slice(0, 1)}`);
+  }
 
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
@@ -61,7 +66,7 @@ export default function renderModalCard(movie) {
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render modal__original-title">${original_title}</li>
-                    <li class="modal__item-render">${genreNamesArr}</li>
+                    <li class="modal__item-render">${genreNamesSlice}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>
@@ -93,9 +98,14 @@ export default function renderModalLibraryCard(movie) {
     genres,
     overview,
   } = movie;
-    const genreNames = genres.map(i => i.name);
-  const genreNamesSlice = [];
-  genreNamesSlice.push(genreNames);
+   const gnr = genres.map(i => i.name)
+    const genreNamesSlice = [];
+    if (gnr.length >= 2) {
+      genreNamesSlice.push(`${gnr.slice(0, 2)}`);
+    }
+    if (gnr.length === 1) {
+      genreNamesSlice.push(`${gnr.slice(0, 1)}`);
+    }
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
   arr = arr ? JSON.parse(arr) : [];
@@ -124,7 +134,7 @@ export default function renderModalLibraryCard(movie) {
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render modal__original-title">${original_title}</li>
-                    <li class="modal__item-render">${genreNamesSlice} </li>
+                    <li class="modal__item-render">${genreNamesSlice}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>
