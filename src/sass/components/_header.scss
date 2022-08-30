@@ -2,11 +2,14 @@
 //$tablet: 768px;
 //$desktop: 1280px;
 
-
+.header-container{
+    position: relative;
+}
 
 .header-section {
     padding-top: 40px;
     padding-bottom: 90px;
+    
 
     @media screen and (min-width: 768px) {
             padding-bottom: 80px;

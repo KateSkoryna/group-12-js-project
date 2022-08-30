@@ -11,8 +11,8 @@ import { gnrArr } from './fetch-films';
 import { onBackdropClick, onCloseModal } from './modal';
 
 export default function renderModalCard(movie) {
-  const gnrArrCycle = gnrArr.flatMap(i => i);
-  const idArr = gnrArrCycle.map(i => i);
+  // const gnrArrCycle = gnrArr.flatMap(i => i);
+  // const idArr = gnrArrCycle.map(i => i);
   modalRenderBox.innerHTML = '';
   const {
     title,
@@ -22,9 +22,10 @@ export default function renderModalCard(movie) {
     vote_count,
     popularity,
     original_title,
-    genre_ids,
+    // genre_ids,
     overview,
   } = movie;
+
   const res = idArr.filter((i) => {
      return genre_ids.includes(i.id)
     
@@ -37,6 +38,8 @@ export default function renderModalCard(movie) {
   if (genreNames.length === 1) {
     genreNamesSlice.push(`${genreNames.slice(0, 1)}`);
   }
+
+
 
   const movieId = String(id);
   let arr = localStorage.getItem(WATCHSTORAGE_KEY);
@@ -66,7 +69,10 @@ export default function renderModalCard(movie) {
                     <span class="modal__item-votes">${vote_count}</span></li>
                     <li class="modal__item-render">${popularity}</li>
                     <li class="modal__item-render modal__original-title">${original_title}</li>
+
                     <li class="modal__item-render">${genreNamesSlice}</li>
+
+
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>

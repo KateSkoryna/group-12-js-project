@@ -1,5 +1,5 @@
 <header class="header header-bg">
-  <div class="container">
+  <div class="container header-container">
     <div class="header-section">
       <nav class="navigation">
         <a href="/src/index.html" class="navigation__logo logo js-main-logo">
@@ -26,6 +26,29 @@
           </svg>
         </button>
       </form>
+    </div>
+    <!-- theme switch  container-->
+    <div class="toolbar container">
+        <div class="theme-switch">
+          <div class="theme-switch__control">
+            <input
+              class="theme-switch__toggle"
+              type="checkbox"
+              name="theme"
+              id="theme-switch-toggle"
+              aria-label="Переключить между тёмной и светлой темой"
+            />
+            <label
+              aria-hidden="true"
+              class="theme-switch__track"
+              for="theme-switch-toggle"
+            >
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
