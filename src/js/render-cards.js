@@ -1,4 +1,4 @@
-import { gallery, jsLibrary } from './refs';
+import { gallery, jsLibrary, galleryListEl } from './refs';
 import { backdrop } from './refs';
 import { renderModalCard, renderModalLibraryCard } from './renderModalCard';
 import { gnrArr } from './fetch-films';
@@ -53,6 +53,12 @@ function renderTrandFilms(data) {
   gallery.addEventListener('click', openModal);
 
   function openModal(e) {
+    console.log(e.target)
+    if (e.target.nodeName !== 'IMG') {
+      return
+    }
+      
+     
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
 
@@ -113,6 +119,10 @@ function renderSearchFilms(data) {
   gallery.addEventListener('click', openModal);
 
   function openModal(e) {
+   // if (e.target.nodeName !== 'LI') 
+ //     return
+    //if (e.target !== galleryListEl return)
+
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
     console.log(data)
