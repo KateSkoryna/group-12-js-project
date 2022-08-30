@@ -127,9 +127,6 @@ function renderWachLib(data) {
   gallery.addEventListener('click', e => openModal(e, data));
 
   function openModal(e) {
-    console.log(e.target);
-    const list = e.currentTarget;
-    console.log(e.currentTarget);
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
     const value = parseInt(e.target.dataset.id);
