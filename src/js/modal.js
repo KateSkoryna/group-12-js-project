@@ -1,9 +1,4 @@
-import {
-  modalCloseBtn,
-  modalWatchBtn,
-  modalQueueBtn,
-  backdrop,
-} from './data/refs';
+import { modalWatchBtn, modalQueueBtn, backdrop } from './data/refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 
 function onCloseModal(event) {

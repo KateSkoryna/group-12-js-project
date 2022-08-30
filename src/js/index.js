@@ -5,13 +5,14 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
-import { ref, form, gallery, paginationEl } from './data/refs';
+import { ref, form, gallery, paginationEl, footerTeamLink } from './data/refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 import './themeChange';
 import './local-storage-themeSwitch';
+import { openModal } from './teamModal';
 
 const options = {
   totalItems: 0,
@@ -38,6 +39,8 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paganation.off('afterMove', search);
   spinner.stop();
 });
+
+footerTeamLink.addEventListener('click', openModal);
 
 form.addEventListener('submit', onClickRead);
 let value = null;
