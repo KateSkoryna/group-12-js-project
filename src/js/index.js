@@ -9,6 +9,8 @@ import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
+import './themeChange';
+import './local-storage-themeSwitch';
 
 const options = {
   totalItems: 0,

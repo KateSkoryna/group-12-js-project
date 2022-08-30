@@ -8,13 +8,15 @@ body.dark-theme {
     // background-color: #333333;
     // color: #fff;
 
+      
+
     & .tui-page-btn {
-        background-color: rgb(35, 32, 30);
+        background-color: rgb(94, 90, 87);
             // background-color: #333333;
             color: lightgrey;
         }
     & .tui-next-is-ellip {
-        background-color: rgb(35, 32, 30);
+        background-color: rgb(94, 90, 87);
             // background-color: #333333;
             color: lightgrey;
         }
@@ -22,9 +24,9 @@ body.dark-theme {
             color: #cccccc
         }
 
-    .backdrop {
-        background-color: rgba(0, 0, 0, 0.409);
-        }
+    // .backdrop {
+    //     background-color: rgba(0, 0, 0, 0.409);
+    //     }
     
     .modal {
         background-color: #333333;
