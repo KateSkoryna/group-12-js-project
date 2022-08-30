@@ -1,11 +1,18 @@
 import { spinner } from './spinner';
 import { paganation } from './pagination';
-
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
-
 import { form, gallery, paginationEl, footerTeamLink } from './data/refs';
+
 import { Notify } from 'notiflix';
-Notify.init({ position: 'center-top', distance: '140px', clickToClose: true });
+Notify.init({
+  width: '320px',
+  position: 'center-top',
+  distance: '20px',
+  clickToClose: true,
+  cssAnimationStyle: 'from-top',
+  cssAnimationDuration: 800,
+});
+
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
