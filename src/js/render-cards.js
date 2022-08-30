@@ -140,6 +140,14 @@ function renderLibrary(data) {
   if (gnr.length === 1) {
     genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
   }
+    // const gnr = genres.map(i => i.name)
+    // const genreNamesSlice = [];
+    // if (gnr.length >= 2) {
+    //   genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
+    // }
+    // if (gnr.length === 1) {
+    //   genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
+    // }
 
   const year = parseInt(release_date);
   const markup = `<li class="gallery__item" data-id=${id}>
