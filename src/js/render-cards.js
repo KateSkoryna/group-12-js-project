@@ -55,7 +55,6 @@ function renderTrandFilms(data) {
 // рендер фильмов по запросу через форму
 
 function renderSearchFilms(data) {
-  console.log(data);
   gallery.innerHTML = '';
   const markup = data
     .map(

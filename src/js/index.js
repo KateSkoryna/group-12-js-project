@@ -27,7 +27,6 @@ fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
   paganation.reset(totalPages);
   renderTrandFilms(images);
-  paganation.on('afterMove', popular);
   paganation.off('afterMove', search);
   spinner.stop();
 });
