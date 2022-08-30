@@ -1,11 +1,12 @@
 import { gallery, backdrop } from './data/refs';
 import { renderModalCard, renderMyLibModalCard } from './renderModalCard';
 import { onEscPress } from './modal';
-
 import { getGenres, getG } from './getGenres';
+
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
+  console.log(data);
   gallery.innerHTML = '';
   const markup = data
     .map(
@@ -52,7 +53,10 @@ function renderTrandFilms(data) {
   }
 }
 
+// рендер фильмов по запросу через форму
+
 function renderSearchFilms(data) {
+  console.log(data);
   gallery.innerHTML = '';
   const markup = data
     .map(
@@ -83,17 +87,19 @@ function renderSearchFilms(data) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-  gallery.addEventListener('click', e => openModal(e, data));
+  gallery.addEventListener('click', openModal);
 
-  function openModal(e, data) {
-    const value = e.target.dataset.id;
+  function openModal(e) {
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+
+    const value = parseInt(e.target.dataset.id);
     if (!value) {
       return;
     }
-    backdrop.classList.remove('is-hidden');
-    window.addEventListener('keydown', onEscPress);
-    console.log(data);
-    renderModalCard(data);
+    const arr = [...data].filter(movie => movie.id === value);
+    const movie = arr[0];
+    renderModalCard(movie);
   }
 }
 

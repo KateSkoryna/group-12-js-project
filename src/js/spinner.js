@@ -1,3 +1,4 @@
+//спиннер
 import { Spinner } from 'spin.js';
 import { opts } from './opts-spinner';
 import { ref } from './data/refs';

@@ -1,3 +1,4 @@
+// наша команда в футере
 import * as basicLightbox from 'basiclightbox';
 import { gallery, modalCloseBtn } from './data/refs';
 import { onCloseModal } from './modal';
