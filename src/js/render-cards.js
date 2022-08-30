@@ -1,6 +1,6 @@
 import { gallery, jsLibrary } from './refs';
 import { backdrop } from './refs';
-import { renderModalCard } from './renderModalCard';
+import { renderModalCard, renderModalLibraryCard } from './renderModalCard';
 import { gnrArr } from './fetch-films';
 import { onEscPress } from './modal';
 // рендер трендовых фильмов
@@ -115,7 +115,7 @@ function renderSearchFilms(data) {
   function openModal(e) {
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
-
+    console.log(data)
     const value = parseInt(e.target.dataset.id);
     if (!value) {
       return;
@@ -127,25 +127,24 @@ function renderSearchFilms(data) {
 }
 
 function renderLibrary(data) {
-     const { poster_path, title, id, genres, release_date, vote_average } = data;
-     const gnr = genres.map(i => i.name)
-    const res = gnr.filter(i => {
-      return genres.includes(i.id);
-    });
+  const { poster_path, title, id, genres, release_date, vote_average } = data;
+  const gnr = genres.map(i => i.name)
+  const res = gnr.filter(i => {
+    return genres.includes(i.id);
+  });
     
-    const genreNamesSlice = [];
-    if (gnr.length >= 2) {
-      genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
-    }
-    if (gnr.length === 1) {
-      genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
-    }
+  const genreNamesSlice = [];
+  if (gnr.length >= 2) {
+    genreNamesSlice.push(`${gnr.slice(0, 2) + ','}`);
+  }
+  if (gnr.length === 1) {
+    genreNamesSlice.push(`${gnr.slice(0, 1) + ','}`);
+  }
 
-    const year = parseInt(release_date);
-    const markup = `<li class="gallery__item" data-id=${id}>
+  const year = parseInt(release_date);
+  const markup = `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
-    <span class="gallery__vote" data-id=${id}>${
-      Math.round(vote_average * 10) / 10
+    <span class="gallery__vote" data-id=${id}>${Math.round(vote_average * 10) / 10
     }</span>
         <img
             class="gallery__img"
@@ -161,19 +160,20 @@ function renderLibrary(data) {
     </div>
 </li>`;
 
-    jsLibrary.insertAdjacentHTML('beforeend', markup);
-     gallery.addEventListener('click', e => openModal(e, data));
+  jsLibrary.insertAdjacentHTML('beforeend', markup);
+  jsLibrary.addEventListener('click', e => openModal(e, data));
 
- function openModal(e, data) {
-  backdrop.classList.remove('is-hidden');
-  window.addEventListener('keydown', onEscPress);
-
-  const value = parseInt(e.target.dataset.id);
-  if (!value) {
-    return;
+  function openModal(e, data) {
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+    const value = parseInt(e.target.dataset.id);
+    if (!value || data.id !== value) {
+      return;
+    }
+    renderModalLibraryCard(data)
   }
-    renderModalCard(data);
-  }
-}
+};
 
 export { renderTrandFilms, renderSearchFilms, renderLibrary };
+
+
