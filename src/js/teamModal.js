@@ -4,7 +4,7 @@ import sprite from "../images/sprite.svg";
 import katya from "../images/team/Katya.jpg";
 import ira from "../images/team/Ira.jpg";
 import aleksiy from "../images/team/Aleksiy.jpg";
-import andriy from "../images/team/andriy.jpg";
+import andriy from "../images/team/Andriy.jpg";
 import lena from "../images/team/Lena.jpg";
 import leonid from "../images/team/Leonid.jpg";
 import yulia from "../images/team/Yulia.jpg";
