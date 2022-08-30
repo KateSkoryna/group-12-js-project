@@ -1,2 +1,0 @@
-!function(){const e=document.querySelector("body"),t=document.querySelector("#theme-switch-toggle"),s=document.querySelector(".footer");t.addEventListener("change",(t=>{e.classList.contains("dark-theme")?(e.classList.remove("dark-theme"),e.classList.add("light-theme"),s.classList.remove("dark-theme")):(e.classList.remove("light-theme"),e.classList.add("dark-theme"),s.classList.add("dark-theme"))}))}();
-//# sourceMappingURL=myLib.9498c704.js.map
