@@ -3,6 +3,8 @@ import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
+import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
+
 import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
