@@ -2,14 +2,11 @@ import { Spinner } from 'spin.js';
 import { opts } from './opts-spinner';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import { openModal } from './teamModal';
 
 import { ref, form, gallery, paginationEl } from './refs';
 import { Notify } from 'notiflix';
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
-
-import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
 const options = {
   totalItems: 0,
