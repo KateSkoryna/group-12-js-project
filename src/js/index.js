@@ -13,6 +13,8 @@ import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 import './themeChange';
 import './local-storage-themeSwitch';
 
+Notify.init({position: 'center-center'});
+
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -50,7 +52,7 @@ function onClickRead(event) {
   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
-    Notify.failure('enter text!');
+    Notify.failure('Enter text!');
     spinner.stop();
     return;
   }
