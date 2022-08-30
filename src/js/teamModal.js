@@ -19,6 +19,7 @@ const teamModal = `
         <li class="team__name">Ekateryna,</li>
         <li class="team__role">Team Lead</li>
         <li class="team__location">Munich, Germany</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/KateSkoryna" target="_blank">
             <svg class="team__github">
@@ -33,6 +34,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
 
@@ -42,6 +44,7 @@ const teamModal = `
         <li class="team__name">Irina,</li>
         <li class="team__role">Scrum Master</li>
         <li class="team__location">Kyiv, Ukraine</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/IrinaZhuravel" target="_blank">
           <svg class="team__github">
@@ -56,6 +59,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -64,6 +68,7 @@ const teamModal = `
         <li class="team__name">Yuliya,</li>
         <li class="team__role">Developer</li>
         <li class="team__location">Aachen, Germany</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/JuliaMykh" target="_blank">
             <svg class="team__github">
@@ -78,6 +83,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -86,6 +92,7 @@ const teamModal = `
         <li class="team__name">Aleksiy,</li>
         <li class="team__role">Developer</li>
         <li class="team__location">Dnipro, Ukraine</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/aleksei-v" target="_blank">
             <svg class="team__github">
@@ -100,6 +107,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -108,6 +116,7 @@ const teamModal = `
         <li class="team__name">Leonid,</li>
         <li class="team__role">Developer</li>
         <li class="team__location">Ivano-Frankivsk, Ukraine</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/Gaydashleo" target="_blank">
             <svg class="team__github">
@@ -122,6 +131,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -130,6 +140,7 @@ const teamModal = `
         <li class="team__name">Elena,</li>
         <li class="team__role">Developer</li>
         <li class="team__location">Черкассы, Украина</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/ElenaTatsenko" target="_blank">
             <svg class="team__github">
@@ -144,6 +155,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -152,6 +164,7 @@ const teamModal = `
         <li class="team__name">Ulyana,</li>
         <li class="team__role">Developer</li>
         <li class="team__location">Munich, Germany</li>
+        <div class="team__icons">
         <li class="team__github">
           <a href="https://github.com/KalinichenkoUlyana" target="_blank">
             <svg class="team__github">
@@ -166,6 +179,7 @@ const teamModal = `
             </svg>
           </a>
         </li>
+        </div>
       </ul>
     </li>
     <li class="team__item">
@@ -174,6 +188,7 @@ const teamModal = `
           <li class="team__name">Andrey,</li>
           <li class="team__role">Developer</li>
           <li class="team__location">Kyiv, Ukraine</li>
+          <div class="team__icons">
           <li class="team__github">
             <a href="https://github.com/Andrii-Vekker" target="_blank">
               <svg class="team__github">
@@ -188,6 +203,7 @@ const teamModal = `
               </svg>
             </a>
           </li>
+          </div>
         </ul>
       </li>
   </ul>
