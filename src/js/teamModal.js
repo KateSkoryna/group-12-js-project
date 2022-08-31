@@ -1,7 +1,6 @@
 // наша команда в футере
 import * as basicLightbox from 'basiclightbox';
-import { gallery, modalCloseBtn } from './data/refs';
-import { onCloseModal } from './modal';
+import { gallery} from './data/refs';
 
 import sprite from '../images/sprite.svg';
 import katya from '../images/team/Katya.jpg';
@@ -13,12 +12,12 @@ import leonid from '../images/team/Leonid.jpg';
 import yulia from '../images/team/Yulia.jpg';
 import ulyana from '../images/team/Ulyana.jpg';
 
-
 function openModal(evt) {
   const modal = basicLightbox.create(teamModal, {
+    closable: true,
     onShow: () => {
       gallery.style.position = 'fixed';
-      modalCloseBtn.addEventListener('click', onCloseModal);
+      // modalCloseBtn.addEventListener('click', onCloseModal);
       window.addEventListener('keydown', closeModalHandler);
     },
     onClose: () => {
@@ -37,7 +36,6 @@ function openModal(evt) {
 
 const teamModal = `
 <div class="team__modal">
-  <button class="team__close" type="buttom" >&#215;</button>
   <ul class="team__list">
   <li class="team__item">
     <img class="team__img" src="${katya}" alt="Katya">

@@ -14,6 +14,7 @@ function renderTrandFilms(data) {
         const year = parseInt(release_date);
         const rating = vote_average.toFixed(1);
         return `<li class="gallery__item" data-id=${id}>
+        <a href="/" class="gallery__link" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
     <span class="gallery__vote" data-id=${id}>${rating}</span>
         <img
@@ -30,6 +31,7 @@ function renderTrandFilms(data) {
         <p class="gallery__genres" data-id=${id}>${getNames}</p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
+    </a>
 </li>`;
       }
     )
@@ -37,8 +39,29 @@ function renderTrandFilms(data) {
   gallery.insertAdjacentHTML('beforeend', markup);
 
   gallery.addEventListener('click', openModal);
+  gallery.addEventListener('keydown', openModalbyEnter);
 
   function openModal(e) {
+    e.preventDefault();
+    if (!e.target.dataset.id) {
+      return;
+    }
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+
+    const value = parseInt(e.target.dataset.id);
+    if (!value) {
+      return;
+    }
+    const arr = [...data].filter(movie => movie.id === value);
+    const movie = arr[0];
+    renderModalCard(movie);
+  }
+
+  function openModalbyEnter(e) {
+    if (e.node !== 'Enter') {
+      return;
+    }
     if (!e.target.dataset.id) {
       return;
     }
@@ -91,6 +114,7 @@ function renderSearchFilms(data) {
   gallery.addEventListener('click', openModal);
 
   function openModal(e) {
+    e.preventDefault();
     if (!e.target.dataset.id) {
       return;
     }
@@ -138,6 +162,7 @@ function renderWachLib(data) {
   gallery.addEventListener('click', e => openModal(e, data));
 
   function openModal(e, data) {
+    e.preventDefault();
     if (!e.target.dataset.id) {
       return;
     }

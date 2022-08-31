@@ -101,6 +101,11 @@
       }
   }
 
+  .gallery__link {
+    pointer-events: none;
+    text-decoration: none;
+  }
+
   .gallery__wrapper {
     position: relative;
     display: block;
