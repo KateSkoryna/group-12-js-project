@@ -45,21 +45,27 @@ function renderModalCard(movie) {
         <div class="modal__card">
             <h2 class="modal__title" data-id=${id}>${title}</h2>
             <div class="modal__list-wrap">
-                <ul class="modal__list">
-                    <li class="modal__item">Vote / Votes</li>
-                    <li class="modal__item">Popularity</li>
-                    <li class="modal__item">Original Title</li>
-                    <li class="modal__item">Genre</li>
-                </ul>
-                <ul class="modal__list-render">
-                    <li class="modal__item-render"><span class="modal__item-vote">${rating}</span> <span class="modal__item-slash">/</span>
-                    <span class="modal__item-votes">${vote_count}</span></li>
-                    <li class="modal__item-render">${popularity}</li>
-                    <li class="modal__item-render modal__original-title">${original_title}</li>
+                <table class="modal__list">
+                     <tr>
+                       <td class="modal__item">Vote / Votes</td>
+                       <td class="modal__item-render"><span class="modal__item-vote">${rating}</span> <span class="modal__item-slash">/</span>
+                           <span class="modal__item-votes">${vote_count}</span></td>
+                     </tr>
+                     <tr>
+                       <td class="modal__item">Popularity</td>
+                       <td class="modal__item-render">${popularity}</td>
+                     </tr>
+                     <tr>
+                       <td class="modal__item">Original Title</td>
+                       <td class="modal__item-render modal__original-title">${original_title}</td>
+                     </tr>
+                     <tr>
+                       <td class="modal__item modal__item-render-genre">Genre</td>
+                       <td class="modal__item-render modal__item-render-genre">${getNames}</td>
+                     </tr>
 
-                    <li class="modal__item-render">${getNames}</li>
-                </ul>
-                </div>
+                </table>
+            </div>
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
         </div>`;
