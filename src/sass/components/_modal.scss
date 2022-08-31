@@ -30,17 +30,18 @@
     flex-direction: column;
     align-items: flex-start;
     justify-items: center;
-   position: absolute;
-   top: 20px;
-   left: 20px;
-   right: 20px;
-   background-color: var(--main-color);
-   padding: 48px 20px 40px 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: var(--main-color);
+    padding: 48px 20px 40px 20px;
 
 
-background-attachment: fixed, fixed;;
-   }
-  
+    background-attachment: fixed, fixed;
+    ;
+}
+
 
 .modal__close-btn {
     position: absolute;
@@ -54,12 +55,14 @@ background-attachment: fixed, fixed;;
     color: black;
     cursor: pointer;
 }
+
 .modal__close-btn:hover .modal__close-icon {
+
     &:hover,
-        &:focus {
-            color: var(--accent-color);
-            transform: scale(2);
-        }
+    &:focus {
+        color: var(--accent-color);
+        transform: scale(2);
+    }
 }
 
 .modal__close-icon {
@@ -81,65 +84,64 @@ background-attachment: fixed, fixed;;
         margin-left: auto;
         margin-right: auto;
     }
-    
-   @media screen and (min-width:768px) and (max-width:1279px) {
-   margin-left: auto;
-   }
-   @media screen and (min-width:1280px) {
-    position: absolute;
-    right:60px;
-    bottom: 40px;
-    
-   }
+
+    @media screen and (min-width:768px) and (max-width:1279px) {
+        margin-left: auto;
+    }
+
+    @media screen and (min-width:1280px) {
+        position: absolute;
+        right: 60px;
+        bottom: 40px;
+
+    }
 }
 
 .modal__poster {
     width: 100%;
     border-radius: 5px;
-    
+
 }
+
 .modal__title {
     text-transform: uppercase;
     font-family: var(--font-family-main);
-   @include font-style (500, 20px, 23.44px, 0);
+    @include font-style (500, 20px, 23.44px, 0);
     margin-bottom: 20px;
 
 }
+
+.modal__list-wrap {
+    margin-bottom: 20px;
+}
+
 .modal__item {
     font-family: var(--font-family-main);
     @include font-style (500, 12px, 16px, 0);
     color: var(--optional-color);
-}
-.modal__item:not(:last-child) {
-    margin-bottom: 8px;
+    white-space: nowrap;
+    padding-right: 40px;
+    padding-bottom: 8px;
+
+    @media screen and (min-width:480px) and (max-width:767px) {
+        padding-right: 100px;
+    }
+
 }
 
-.modal__item-render{
+.modal__item-render {
     font-family: var(--font-family-main);
     @include font-style (500, 12px, 16px, 0);
     color: var(--extra-color);
-}  
+    padding-bottom: 8px;
+}
+
+.modal__item-render-genre {
+    padding-bottom: 0px;
+}
+
 .modal__original-title {
     text-transform: uppercase;
-}
-
-.modal__item-render:not(:last-child) {
-    margin-bottom: 8px;
-}
-
-.modal__list-wrap {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-}
-
-.modal__list {
-    white-space: nowrap;
-    margin-right: 40px;
-
-    @media screen and (min-width:480px) and (max-width:767px) {
-        margin-right: 100px;
-    }
 }
 
 .modal__item-vote {
@@ -148,22 +150,26 @@ background-attachment: fixed, fixed;;
     border-radius: 5px;
     background-color: var(--second-accent-color);
 }
+
 .modal__item-votes {
     padding-left: 10px;
     padding: 1px 9px;
     border-radius: 5px;
     background-color: #F7F7F7;
 }
+
 .modal__item-slash {
     color: var(--optional-color);
     padding: 3px;
 }
+
 .modal__about {
     @include font-style (500, 12px, 14px, 0);
     font-family: var(--font-family-main);
     text-transform: uppercase;
     margin-bottom: 8px;
 }
+
 .modal__description {
     @include font-style (500, 12px, 14px, 0);
     font-family: var(--font-family-main);
@@ -174,6 +180,7 @@ background-attachment: fixed, fixed;;
     display: flex;
     justify-content: center;
 }
+
 .modal__btn {
     @include size (110px, 44px);
     @include font-style (500, 12px, 16px, 0);
@@ -183,6 +190,7 @@ background-attachment: fixed, fixed;;
     background-color: var(--main-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     transition: scale 250ms linear;
+
     &:hover,
     &:focus {
         background-color: var(--main-color);
@@ -190,10 +198,11 @@ background-attachment: fixed, fixed;;
         border: 1px solid var(--second-accent-color);
         color: var(--main-color);
         scale: 1.1;
-        
+
     }
-  
+
 }
+
 .modal__watch-btn {
     margin-right: 20px;
 }
@@ -216,6 +225,7 @@ background-attachment: fixed, fixed;;
         padding-right: 72px;
         padding-left: 36px;
     }
+
     .modal__render-box {
         display: flex;
 
@@ -223,25 +233,32 @@ background-attachment: fixed, fixed;;
             margin-bottom: 20px;
         }
     }
+
     .modal__poster-wrap {
         margin-right: 68px;
         padding-top: 0px;
     }
+
     .modal__poster {
         @include size (264px, 374px);
     }
+
     .modal__card {
         width: 264px;
     }
+
     .modal__watch-btn {
         margin-right: 15px;
     }
+
     .modal__btn {
         @include size (125px, 44px);
     }
+
     .modal__button-wrap {
         justify-content: space-between;
     }
+
     .modal__description {
         margin-bottom: 20px;
     }
@@ -254,31 +271,40 @@ background-attachment: fixed, fixed;;
         @include size (806px, 558px);
         padding: 40px 12px;
     }
+
     .modal__poster-wrap {
         margin-right: 16px;
     }
-    .modal__poster{
+
+    .modal__poster {
         @include size (375px, 478px);
     }
+
     .modal__card {
         width: 391px;
     }
+
     .modal__title {
         font-size: 30px;
         line-height: 1.172;
     }
-    .modal__list-wrap {
-        padding-right: 144px;
+
+    .modal__item {
+        padding-right: 85px;
     }
+
     .modal__button-wrap {
         justify-content: start;
     }
+
     .modal__btn {
         @include size (136px, 44px);
     }
-    .modal__watch-btn{
+
+    .modal__watch-btn {
         margin-right: 15px;
     }
+
     .modal__queueBtn {
         margin-right: 15px;
     }
