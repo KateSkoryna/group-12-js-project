@@ -33,7 +33,7 @@ function getAllGenId(arr) {
     array.push(el.name);
   });
 
-  return array;
+  return array.join(', ');
 }
 
 function getAllGeners(ids) {
@@ -43,7 +43,7 @@ function getAllGeners(ids) {
       arr.push(genres[id]);
     }
   });
-  return arr;
+  return array.join(', ');
 }
 
 export { getGenres, getG, getAllGenId, getAllGeners };
