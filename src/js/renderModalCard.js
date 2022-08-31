@@ -54,10 +54,10 @@ function renderModalCard(movie) {
                 <ul class="modal__list-render">
                     <li class="modal__item-render"><span class="modal__item-vote">${rating}</span> <span class="modal__item-slash">/</span>
                     <span class="modal__item-votes">${vote_count}</span></li>
-                    <li class="modal__item-render">${popularity}</li>
+                    <li class="modal__item-render modal__original-pop">${popularity}</li>
                     <li class="modal__item-render modal__original-title">${original_title}</li>
 
-                    <li class="modal__item-render">${getNames}</li>
+                    <li class="modal__item-render modal__original-genre">${getNames}</li>
                 </ul>
                 </div>
             <h3 class="modal__about">About</h3>

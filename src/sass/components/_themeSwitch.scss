@@ -8,8 +8,6 @@ body.dark-theme {
     // background-color: #333333;
     // color: #fff;
 
-      
-
     & .tui-page-btn {
         background-color: rgb(94, 90, 87);
             // background-color: #333333;
@@ -21,25 +19,44 @@ body.dark-theme {
             color: lightgrey;
         }
     & .gallery__name {
-            color: #cccccc
+            color: #cccccc;
         }
 
     // .backdrop {
     //     background-color: rgba(0, 0, 0, 0.409);
     //     }
     
-    .modal {
+        & .modal {
         background-color: #333333;
         }
 
-    .modal__watch-btn {
+        & .modal__watch-btn {
         background-color: rgb(94, 90, 87);
     }
 
-    .modal__queueBtn {
+        & .modal__queueBtn {
         background-color: rgb(94, 90, 87);
     }
-            
+
+    
+    //     & .modal__item-render{
+    //     color: #969292;
+    // }
+        .modal__item-render.modal__original-pop {
+        color: #cccccc;
+    }
+        .modal__item-render.modal__original-title {
+            color: #cccccc;
+    }
+        .modal__item-render.modal__original-genre{
+        color: #cccccc;
+    }
+    //     & .modal__item-vote{
+    //         color: black;
+    // }
+    //     & .modal__item-votes{
+    //         color: black;
+    // }
 }
 
 .toolbar {
