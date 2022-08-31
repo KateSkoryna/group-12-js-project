@@ -53,9 +53,15 @@ function renderTrandFilms(data) {
     if (!value) {
       return;
     }
+
     const arr = [...data].filter(movie => movie.id === value);
+
     const movie = arr[0];
-    renderModalCard(movie);
+    if (arr.length === 0 || undefined) {
+      return;
+    } else {
+      renderModalCard(movie);
+    }
   }
 
   function openModalbyEnter(e) {
@@ -72,9 +78,14 @@ function renderTrandFilms(data) {
     if (!value) {
       return;
     }
+
     const arr = [...data].filter(movie => movie.id === value);
     const movie = arr[0];
-    renderModalCard(movie);
+    if (arr.length === 0 || undefined) {
+      return;
+    } else {
+      renderModalCard(movie);
+    }
   }
 }
 
@@ -131,7 +142,11 @@ function renderSearchFilms(data) {
     }
     const arr = [...data].filter(movie => movie.id === value);
     const movie = arr[0];
-    renderModalCard(movie);
+    if (arr.length === 0 || undefined) {
+      return;
+    } else {
+      renderModalCard(movie);
+    }
   }
 
   function openModalbyEnter(e) {
@@ -150,7 +165,11 @@ function renderSearchFilms(data) {
     }
     const arr = [...data].filter(movie => movie.id === value);
     const movie = arr[0];
-    renderModalCard(movie);
+    if (arr.length === 0 || undefined) {
+      return;
+    } else {
+      renderModalCard(movie);
+    }
   }
 }
 

@@ -22,6 +22,7 @@ import { openModal } from './teamModal';
 
 const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
+paganation.on('afterMove', popular);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
@@ -35,8 +36,6 @@ footerTeamLink.addEventListener('click', openModal);
 
 form.addEventListener('submit', onClickRead);
 let value = null;
-
-paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();

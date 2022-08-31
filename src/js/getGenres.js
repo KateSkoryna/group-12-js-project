@@ -27,4 +27,23 @@ function getG(arr) {
   }
 }
 
-export { getGenres, getG };
+function getAllGenId(arr) {
+  const array = [];
+  arr.forEach(el => {
+    array.push(el.name);
+  });
+
+  return array;
+}
+
+function getAllGeners(ids) {
+  const arr = [];
+  ids.forEach(id => {
+    if (genres[id]) {
+      arr.push(genres[id]);
+    }
+  });
+  return arr;
+}
+
+export { getGenres, getG, getAllGenId, getAllGeners };

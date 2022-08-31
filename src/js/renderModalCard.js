@@ -9,7 +9,7 @@ import {
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 import { onBackdropClick, onCloseModal } from './modal';
-import { getGenres, getG } from './getGenres';
+import { getGenres, getG, getAllGenId, getAllGeners } from './getGenres';
 
 // функция рендера модального окна на странице home
 
@@ -27,7 +27,7 @@ function renderModalCard(movie) {
     overview,
   } = movie;
 
-  const getNames = getGenres(genre_ids);
+  const getNames = getAllGeners(genre_ids);
   const rating = vote_average.toFixed(1);
 
   const movieId = String(id);
@@ -93,7 +93,7 @@ function renderMyLibModalCard(movie) {
     overview,
   } = movie;
 
-  const getNames = getG(genres);
+  const getNames = getAllGenId(genres);
   const rating = vote_average.toFixed(1);
 
   const movieId = String(id);
