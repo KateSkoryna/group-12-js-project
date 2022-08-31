@@ -1,9 +1,4 @@
-import {
-  modalCloseBtn,
-  modalWatchBtn,
-  modalQueueBtn,
-  backdrop,
-} from './data/refs';
+import { modalWatchBtn, modalQueueBtn, backdrop } from './data/refs';
 import { checkWatchBtn, checkQueueBtn } from './local-storage';
 
 function onCloseModal(event) {
@@ -15,7 +10,6 @@ function onCloseModal(event) {
 }
 
 function onBackdropClick(e) {
-  e.preventDefault();
   if (e.target === backdrop || e.target.getAttribute('data-close') == '') {
     onCloseModal();
   }

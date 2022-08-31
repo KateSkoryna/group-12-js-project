@@ -1,12 +1,21 @@
 import { fetchSearchFilmById } from './fetch-films';
-import { gallery, watchedChoice, queueChoice, emptyGallery } from './data/refs';
+import {
+  gallery,
+  watchedChoice,
+  queueChoice,
+  emptyGallery,
+  footerTeamLink,
+} from './data/refs';
 import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 import { renderWachLib } from './render-cards';
+import { openModal } from './teamModal';
 
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 
 let watched = JSON.parse(localStorage.getItem(WATCHSTORAGE_KEY)) || [];
 let queue = JSON.parse(localStorage.getItem(QUEUESTORAGE_KEY)) || [];
+
+footerTeamLink.addEventListener('click', openModal);
 
 if (watched.length === 0) {
   emptyGallery.classList.remove('disguise');

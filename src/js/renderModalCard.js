@@ -11,6 +11,8 @@ import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './data/keys';
 import { onBackdropClick, onCloseModal } from './modal';
 import { getGenres, getG } from './getGenres';
 
+// функция рендера модального окна на странице home
+
 function renderModalCard(movie) {
   modalRenderBox.innerHTML = '';
   const {
@@ -74,6 +76,9 @@ function renderModalCard(movie) {
   backdrop.addEventListener('click', onBackdropClick);
   modalCloseBtn.addEventListener('click', onCloseModal);
 }
+
+// функция рендера модального окна на странице myLib
+
 function renderMyLibModalCard(movie) {
   modalRenderBox.innerHTML = '';
   const {
@@ -124,6 +129,7 @@ function renderMyLibModalCard(movie) {
             <h3 class="modal__about">About</h3>
             <p class="modal__description">${overview}</p>
         </div>`;
+
   modalRenderBox.insertAdjacentHTML('beforeend', markup);
 
   modalWatchBtn.textContent = inStorage ? 'watched' : 'add to watched';

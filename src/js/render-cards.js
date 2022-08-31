@@ -1,8 +1,8 @@
 import { gallery, backdrop } from './data/refs';
 import { renderModalCard, renderMyLibModalCard } from './renderModalCard';
 import { onEscPress } from './modal';
-
 import { getGenres, getG } from './getGenres';
+
 // рендер трендовых фильмов
 
 function renderTrandFilms(data) {
@@ -39,6 +39,9 @@ function renderTrandFilms(data) {
   gallery.addEventListener('click', openModal);
 
   function openModal(e) {
+    if (!e.target.dataset.id) {
+      return;
+    }
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
 
@@ -51,6 +54,8 @@ function renderTrandFilms(data) {
     renderModalCard(movie);
   }
 }
+
+// рендер фильмов по запросу через форму
 
 function renderSearchFilms(data) {
   gallery.innerHTML = '';
@@ -83,17 +88,22 @@ function renderSearchFilms(data) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-  gallery.addEventListener('click', e => openModal(e, data));
+  gallery.addEventListener('click', openModal);
 
-  function openModal(e, data) {
-    const value = e.target.dataset.id;
-    if (!value) {
+  function openModal(e) {
+    if (!e.target.dataset.id) {
       return;
     }
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
-    console.log(data);
-    renderModalCard(data);
+
+    const value = parseInt(e.target.dataset.id);
+    if (!value) {
+      return;
+    }
+    const arr = [...data].filter(movie => movie.id === value);
+    const movie = arr[0];
+    renderModalCard(movie);
   }
 }
 
@@ -101,8 +111,8 @@ function renderWachLib(data) {
   const { poster_path, title, id, genres, release_date, vote_average } = data;
 
   const genreName = getG(genres);
-
   const year = parseInt(release_date);
+
   const markup = `<li class="gallery__item" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
     <span class="gallery__vote" data-id=${id}>${
@@ -128,6 +138,9 @@ function renderWachLib(data) {
   gallery.addEventListener('click', e => openModal(e, data));
 
   function openModal(e, data) {
+    if (!e.target.dataset.id) {
+      return;
+    }
     backdrop.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscPress);
     const value = parseInt(e.target.dataset.id);

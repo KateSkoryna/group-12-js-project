@@ -1,5 +1,8 @@
+// наша команда в футере
 import * as basicLightbox from 'basiclightbox';
-import { footerTeamLink } from './data/refs';
+import { gallery, modalCloseBtn } from './data/refs';
+import { onCloseModal } from './modal';
+
 import sprite from '../images/sprite.svg';
 import katya from '../images/team/Katya.jpg';
 import ira from '../images/team/Ira.jpg';
@@ -11,27 +14,26 @@ import yulia from '../images/team/Yulia.jpg';
 import ulyana from '../images/team/Ulyana.jpg';
 
 
-footerTeamLink.addEventListener("click", onOpenModalTeam);
-
-function onOpenModalTeam() {
-  const modalTeam = basicLightbox.create(teamModal, {
-    onShow: modalTeam => {
-      window.addEventListener("keydown", escapeKeyCloseModal);
-      modalTeam.element().querySelector(".team__close").onclick =
-      modalTeam.close;
+function openModal(evt) {
+  const modal = basicLightbox.create(teamModal, {
+    onShow: () => {
+      gallery.style.position = 'fixed';
+      modalCloseBtn.addEventListener('click', onCloseModal);
+      window.addEventListener('keydown', closeModalHandler);
     },
-      onClose: modalTeam => {
-      window.removeEventListener("keydown", escapeKeyCloseModal);
+    onClose: () => {
+      gallery.style.position = 'static';
+      window.removeEventListener('keydown', closeModalHandler);
     },
   });
+  modal.show();
 
-  function escapeKeyCloseModal(event) {
-    if (event.code === "Escape") {
-      modalTeam.close();
+  function closeModalHandler(evt) {
+    if (evt.code === 'Escape') {
+      modal.close();
     }
   }
-  modalTeam.show();
-  }
+}
 
 const teamModal = `
 <div class="team__modal">

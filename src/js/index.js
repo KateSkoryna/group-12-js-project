@@ -1,43 +1,37 @@
-import { Spinner } from 'spin.js';
-import { opts } from './opts-spinner';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
-
+import { spinner } from './spinner';
+import { paganation } from './pagination';
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
+import { form, gallery, paginationEl, footerTeamLink } from './data/refs';
 
-import { ref, form, gallery, paginationEl } from './data/refs';
 import { Notify } from 'notiflix';
+Notify.init({
+  width: '320px',
+  position: 'center-top',
+  distance: '20px',
+  clickToClose: true,
+  cssAnimationStyle: 'from-top',
+  cssAnimationDuration: 800,
+});
+
 import { renderTrandFilms, renderSearchFilms } from './render-cards';
 import { fetchTrendFilms, fetchSearchFilms } from './fetch-films';
 import { bodyRef, toggleRef, footerDarktheme } from './themeChange';
 import './themeChange';
 import './local-storage-themeSwitch';
-
-const options = {
-  totalItems: 0,
-  itemsPerPage: 20,
-  visiblePages: 5,
-  centerAlign: true,
-  page: 1,
-};
-const paganation = new Pagination(
-  document.getElementById('pagination'),
-  options
-);
+import { openModal } from './teamModal';
 
 const page = paganation.getCurrentPage();
 paganation.on('afterMove', search);
-
-const spinner = new Spinner(opts).spin(ref.spinner);
 
 fetchTrendFilms(page).then(({ total_pages: totalPages, results: images }) => {
   paginationEl.classList.remove('visually-hidden');
   paganation.reset(totalPages);
   renderTrandFilms(images);
-  paganation.on('afterMove', popular);
   paganation.off('afterMove', search);
   spinner.stop();
 });
+
+footerTeamLink.addEventListener('click', openModal);
 
 form.addEventListener('submit', onClickRead);
 let value = null;
@@ -46,11 +40,10 @@ paganation.on('afterMove', popular);
 
 function onClickRead(event) {
   event.preventDefault();
-  const spinner = new Spinner(opts).spin(ref.spinner); ////create spinner
   value = event.target.query.value.toLowerCase().trim();
 
   if (!value) {
-    Notify.failure('enter text!');
+    Notify.failure('I cant read your mind. Enter movie title, please!');
     spinner.stop();
     return;
   }
@@ -61,7 +54,7 @@ function onClickRead(event) {
       spinner.stop(); ////stoping spinner
       if (images.length === 0) {
         paginationEl.classList.add('visually-hidden');
-        Notify.failure(`Images by not found!`);
+        Notify.failure(`Sorry...Movie was not found...`);
         return;
       }
 
@@ -75,7 +68,6 @@ function onClickRead(event) {
 }
 
 function popular(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchTrendFilms(currentPage).then(({ results: images }) => {
@@ -85,7 +77,6 @@ function popular(event) {
 }
 
 function search(event) {
-  const spinner = new Spinner(opts).spin(ref.spinner);
   gallery.innerHTML = '';
   const currentPage = event.page;
   fetchSearchFilms(value, currentPage).then(({ results: images }) => {
