@@ -90,6 +90,7 @@ function renderSearchFilms(data) {
         const rating = vote_average.toFixed(1);
 
         return `<li class="gallery__item" data-id="${id}">
+        <a href="/" class="gallery__link" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
     <span class="gallery__vote" data-id=${id}>${rating}</span>
         <img
@@ -106,15 +107,37 @@ function renderSearchFilms(data) {
         <p class="gallery__genres" data-id=${id}>${getNames} </p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
+    </a>
 </li>`;
       }
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+
   gallery.addEventListener('click', openModal);
+  gallery.addEventListener('keydown', openModalbyEnter);
 
   function openModal(e) {
     e.preventDefault();
+    if (!e.target.dataset.id) {
+      return;
+    }
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+
+    const value = parseInt(e.target.dataset.id);
+    if (!value) {
+      return;
+    }
+    const arr = [...data].filter(movie => movie.id === value);
+    const movie = arr[0];
+    renderModalCard(movie);
+  }
+
+  function openModalbyEnter(e) {
+    if (e.node !== 'Enter') {
+      return;
+    }
     if (!e.target.dataset.id) {
       return;
     }
@@ -138,6 +161,7 @@ function renderWachLib(data) {
   const year = parseInt(release_date);
 
   const markup = `<li class="gallery__item" data-id=${id}>
+  <a href="/" class="gallery__link" data-id=${id}>
     <div class="gallery__wrapper" data-id=${id}>
     <span class="gallery__vote" data-id=${id}>${
     Math.round(vote_average * 10) / 10
@@ -155,14 +179,31 @@ function renderWachLib(data) {
         <p class="gallery__genres" data-id=${id}>${genreName} </p>
         <span class="gallery__year" data-id=${id}>${year ? year : 'n/a'}</span>
     </div>
+    </a>
 </li>`;
 
   gallery.insertAdjacentHTML('beforeend', markup);
 
   gallery.addEventListener('click', e => openModal(e, data));
+  gallery.addEventListener('keydown', openModalbyEnter);
 
   function openModal(e, data) {
     e.preventDefault();
+    if (!e.target.dataset.id) {
+      return;
+    }
+    backdrop.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscPress);
+    const value = parseInt(e.target.dataset.id);
+    if (value === data.id && e.target) {
+      renderMyLibModalCard(data);
+    }
+  }
+
+  function openModalbyEnter(e) {
+    if (e.node !== 'Enter') {
+      return;
+    }
     if (!e.target.dataset.id) {
       return;
     }
