@@ -121,46 +121,79 @@
 
 
 //    ------- Modal form ------
+
 .team__modal {
   position: fixed;
-  z-index: 3;
-top: 50%;
+  z-index: 2;
+  top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
   width: 100%;
-
   height: 100%;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
+  padding: 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 10px 20px 20px 20px;
+  }
+
   @media screen and (min-width:1280px){
-    width: 950px;
-    height: 95%;
+    width: 79%;
+    height: 90%;
     overflow: hidden;
   }
+
+ .team__close {
+  border-radius: 50%;
+  border: 0px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 0;
+  margin-left: 94%;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+    text-transform: scale(1.03);
+  }
+
+  @media screen and (min-width: 480px) {
+    margin-left: 89%;
+  }
+  
+  @media screen and (min-width: 768px) {
+    margin-left: 99%;
+  }
+  }
+
  .team__list {
-   display: grid;
-    grid-gap: 20px;
+    display: grid;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: baseline;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
   
   @media screen and (min-width: 1240px) {
     grid-template-columns: repeat(4, 1fr);
+  }  
   }
-   .team__item{
-        position: relative;
-        padding-bottom: 30px;
-        }
- } 
+  } 
+    
+  .team__item {
+    position: relative;    
+  }
+
+.team__item:hover {
+  transform: scale(1.03);
+  box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
 }
-  
- 
-  .team__item:hover {
-      transform: scale(1.03);
-      box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
-    }
 
 .team__img {
   display: block;
@@ -169,15 +202,17 @@ top: 50%;
     border-radius: 5px 5px 0px 0px;
     margin-bottom: 10px;
 }
+
 .team__info {
   text-align: center;
   @include font-style(500, 12px, 14px, 0);
   color: var(--extra-color);
-  margin-bottom: 20px;
+
 }
 .team__info > li{
   margin-right: 4px;
 }
+
 .team__name, .team__role {
   display: inline-block;
   text-transform: uppercase;
@@ -191,9 +226,11 @@ top: 50%;
   @include size(12px, 12px);
    fill: var(--main-color);
 }
+
 .team__github{
   margin-right: 4px;
 }
+
 .team__icons {
   position: absolute;
   top: 0;
