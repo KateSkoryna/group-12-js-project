@@ -1,6 +1,6 @@
 // наша команда в футере
 import * as basicLightbox from 'basiclightbox';
-import { gallery} from './data/refs';
+import { gallery } from './data/refs';
 
 import sprite from '../images/sprite.svg';
 import katya from '../images/team/Katya.jpg';
@@ -162,7 +162,7 @@ const teamModal = `
     <ul class="team__info">
       <li class="team__name">Elena,</li>
       <li class="team__role">Developer</li>
-      <li class="team__location">Черкассы, Украина</li>
+      <li class="team__location">Cherkassy, Ukraine</li>
       <div class="team__icons">
       <li class="team__github">
         <a href="https://github.com/ElenaTatsenko" target="_blank">
